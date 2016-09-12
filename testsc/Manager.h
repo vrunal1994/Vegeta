@@ -17,7 +17,7 @@ private:
 	SDL_Surface* const screen;
 	Ground ground;
 	Football fball;
-	Goalpost gpost;
+	//Goalpost gpost;
 	void draw() const;
 	void update();
 	Manager(const Manager&);

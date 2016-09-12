@@ -13,9 +13,9 @@ env( SDL_putenv(const_cast<char*>("SDL_VIDEO_CENTERED=center")) ),
 io( IOManager::getInstance() ),
 
 screen(io.getScreen()),
-ground("images/greenbg.bmp"),
-fball("images/football.bmp"),
-gpost("images/goalpost.bmp")
+ground("images/PoolTable.bmp"),
+fball("images/ball.bmp")
+
 
 
 {
@@ -45,7 +45,7 @@ void Manager::play()
 
   ground.freesurface(); 
   fball.freesurface();  
-  gpost.freesurface();   
+ // gpost.freesurface();   
 
 
       
@@ -55,7 +55,7 @@ void Manager::draw() const {
   //sky.draw();
   ground.draw();
   fball.draw();
-  gpost.draw();
+  //gpost.draw();
   SDL_Flip(screen);
   
 }
