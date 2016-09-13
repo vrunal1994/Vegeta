@@ -1,5 +1,6 @@
 #include <iostream>
 #include "iomanager.h"
+#include "generateFrames.h"
 
 class Football{
 public:
@@ -19,6 +20,10 @@ private:
   const float X_VELOCITY;
   const float Width;
   const unsigned int DT;
+  bool makeVideo;
+
+  GenerateFrames genframes;
+   bool printgoal;
   Football(const Football&);
   Football& operator=(const Football&);
 };

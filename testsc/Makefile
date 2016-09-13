@@ -4,13 +4,16 @@ CFLAGS=`sdl-config --cflags` -g -W -Wall -Weffc++ -Wextra -pedantic -O0
 SDL_LIB=`sdl-config --libs` -lSDL_ttf -lSDL_image 
 CCC=g++
 
-OBJECTS = iomanager.o Manager.o ground.o football.o goalpost.o
+OBJECTS = iomanager.o Manager.o ground.o football.o goalpost.o generateFrames.o
 
 run: main.o $(OBJECTS)
 	$(CCC) $(CFLAGS)  main.cpp -o run $(OBJECTS) $(SDL_LIB)
 
 ground.o: ground.cpp ground.h
 	$(CCC) $(CFLAGS) -c ground.cpp
+
+generateFrames.o: generateFrames.cpp generateFrames.h
+	$(CCC) $(CFLAGS) -c generateFrames.cpp
 
 goalpost.o: goalpost.cpp goalpost.h
 	$(CCC) $(CFLAGS) -c goalpost.cpp

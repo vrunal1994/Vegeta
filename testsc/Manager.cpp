@@ -13,8 +13,10 @@ env( SDL_putenv(const_cast<char*>("SDL_VIDEO_CENTERED=center")) ),
 io( IOManager::getInstance() ),
 
 screen(io.getScreen()),
-ground("images/PoolTable.bmp"),
-fball("images/ball.bmp")
+ground("images/transaprenttable.bmp"),
+fball("images/transparent.bmp")
+
+
 
 
 
@@ -61,7 +63,14 @@ void Manager::draw() const {
 }
 
 void Manager::update() {
-  fball.update();
+ fball.update();
+  /*if(freshframe && makeVideo){
+    genframes.makeFrame();
+
+  }
+  else{
+
+  }*/
   
    
   // always update viewport last

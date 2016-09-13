@@ -27,7 +27,7 @@ IOManager::IOManager( ) :
   }
   font = TTF_OpenFont(
          "font/dyslexic-bold.otf", 
-         16
+         30
          );
   if ( !font ) {
     throw string("TTF_OpenFont failed: ") + TTF_GetError();
@@ -46,7 +46,7 @@ SDL_Surface* IOManager::loadAndSet(const string& filename, bool setcolorkey) con
     throw string("Unable to load bitmap ")+filename;
   }
   if ( setcolorkey ) {
-    Uint32 colorkey = SDL_MapRGB(tmp->format, 255, 0, 255);
+    Uint32 colorkey = SDL_MapRGB(tmp->format, 255, 255, 255);
     SDL_SetColorKey(tmp, SDL_SRCCOLORKEY|SDL_RLEACCEL, colorkey);
   }
   // Optimize the strip for fast display

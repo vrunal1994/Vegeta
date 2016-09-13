@@ -6,7 +6,7 @@
 
 Ground::Ground(const std::string& name):
 io( IOManager::getInstance() ),
-setColorKey(false),
+setColorKey(true),
 screen(io.getScreen()),
 image(io.loadAndSet(name,setColorKey)),
 imagewidth(0),
