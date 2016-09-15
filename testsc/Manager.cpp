@@ -15,7 +15,8 @@ io( IOManager::getInstance() ),
 screen(io.getScreen()),
 ground("images/transaprenttable.bmp"),
 fball("images/transparent.bmp"),
-makeVideo(true),
+fball1("images/transparent.bmp"),
+makeVideo(false),
 genframes(screen)
 
 
@@ -49,6 +50,7 @@ void Manager::play()
 
   ground.freesurface(); 
   fball.freesurface();  
+  fball1.freesurface();
  // gpost.freesurface();   
 
 
@@ -58,7 +60,8 @@ void Manager::play()
 void Manager::draw() const {
   //sky.draw();
   ground.draw();
-  fball.draw();
+ fball.draw();
+ // fball1.draw1();
   //gpost.draw();
   SDL_Flip(screen);
   
@@ -66,6 +69,7 @@ void Manager::draw() const {
 
 void Manager::update() {
  bool update=fball.update();
+ //bool update1=fball1.update1();
   if(update && makeVideo){
     genframes.makeFrame();
 

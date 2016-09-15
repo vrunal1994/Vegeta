@@ -9,6 +9,8 @@ Football(const std::string& imagepath);
   bool update();
   void freesurface();
   void draw() const;
+  void draw1() const;
+  bool update1();
 private:
   const IOManager& io;
   bool setColorKey;
@@ -16,6 +18,8 @@ private:
   SDL_Surface* image;
   float imagewidth;
   float imageheight;
+  float imagewidth1;
+  float imageheight1;
   const float INCR_X;
   const float X_VELOCITY;
   const float Width;
