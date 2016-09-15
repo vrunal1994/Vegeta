@@ -16,7 +16,7 @@ INCR_X(0.3),
 X_VELOCITY(300.0),
 Width(854),
 DT(17u),
-makeVideo(true),
+makeVideo(false),
 genframes(screen),
 printgoal(false)
 {
@@ -54,7 +54,7 @@ void Football::freesurface(){
 	SDL_FreeSurface(image);
 }
 
-void Football::update(){
+bool Football::update(){
 
 static unsigned int remainder = 0u; // ***
   static unsigned int currentTicks = 0u;
@@ -79,7 +79,7 @@ static unsigned int remainder = 0u; // ***
   prevTicks = currentTicks;
   remainder = elapsedTicks - DT;
   
-
+  return true;
 	}	
 
   else if(imagewidth<=Width-image->w-40){
@@ -94,18 +94,23 @@ static unsigned int remainder = 0u; // ***
   remainder = elapsedTicks - DT;
 
     
-  
+  return true;
   }
  // return true;
   else{
-    makeVideo=false;
     printgoal=true;
+    return false;
+    //makeVideo=false;
+    
     
   }
   if(makeVideo){
     genframes.makeFrame();
   }
 	
+}
+else{
+  return false;
 }
 //return false;
 

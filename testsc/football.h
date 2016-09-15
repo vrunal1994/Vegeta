@@ -6,7 +6,7 @@ class Football{
 public:
 Football(const std::string& imagepath);
   ~Football();
-  void update();
+  bool update();
   void freesurface();
   void draw() const;
 private:

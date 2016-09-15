@@ -14,7 +14,9 @@ io( IOManager::getInstance() ),
 
 screen(io.getScreen()),
 ground("images/transaprenttable.bmp"),
-fball("images/transparent.bmp")
+fball("images/transparent.bmp"),
+makeVideo(true),
+genframes(screen)
 
 
 
@@ -63,14 +65,12 @@ void Manager::draw() const {
 }
 
 void Manager::update() {
- fball.update();
-  /*if(freshframe && makeVideo){
+ bool update=fball.update();
+  if(update && makeVideo){
     genframes.makeFrame();
 
   }
-  else{
-
-  }*/
+  
   
    
   // always update viewport last

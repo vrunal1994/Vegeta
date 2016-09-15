@@ -19,8 +19,8 @@ private:
 	SDL_Surface* const screen;
 	Ground ground;
 	Football fball;
-	//bool makeVideo;
-	//GenerateFrames genframes;
+	bool makeVideo;
+	GenerateFrames genframes;
 	//Goalpost gpost;
 	void draw() const;
 	void update();
