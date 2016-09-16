@@ -16,7 +16,7 @@ screen(io.getScreen()),
 ground("images/transaprenttable.bmp"),
 fball("images/transparent.bmp"),
 fball1("images/transparent.bmp"),
-makeVideo(false),
+makeVideo(true),
 genframes(screen)
 
 
