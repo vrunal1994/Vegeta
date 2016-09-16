@@ -204,7 +204,7 @@ float goal_dist = sqrt( (delta_x * delta_x) + (delta_y * delta_y) );
 
 
     float speed_per_tick = 5;
-float delta_x = 854 - imagewidth;
+float delta_x = 790 - imagewidth;
 float delta_y = 240 - imageheight;
 float goal_dist = sqrt( (delta_x * delta_x) + (delta_y * delta_y) );
 
@@ -238,9 +238,9 @@ float xVel = (100 * y / dist) ;
   return true;
   }
 
-  else if(imagewidth >=457 && imageheight<=Width-image->w){
+  else if(imagewidth >=550 && imageheight<=Width-image->w){
     float speed_per_tick = 5;
-float delta_x = 457 - imagewidth;
+float delta_x = 510 - imagewidth;
 float delta_y = 0 - imageheight;
 float goal_dist = sqrt( (delta_x * delta_x) + (delta_y * delta_y) );
 
