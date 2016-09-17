@@ -14,9 +14,9 @@ io( IOManager::getInstance() ),
 
 screen(io.getScreen()),
 ground("images/transaprenttable.bmp"),
-fball("images/transparent.bmp"),
+fball("images/blueba.png"),
 fball1("images/transparent.bmp"),
-makeVideo(true),
+makeVideo(false),
 genframes(screen)
 
 
