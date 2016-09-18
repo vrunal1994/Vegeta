@@ -13,14 +13,10 @@ env( SDL_putenv(const_cast<char*>("SDL_VIDEO_CENTERED=center")) ),
 io( IOManager::getInstance() ),
 
 screen(io.getScreen()),
-ground("images/transaprenttable.bmp"),
+ground("images/transaprenttable.png"),
 fball("images/blueba.png"),
-fball1("images/transparent.bmp"),
-makeVideo(false),
+makeVideo(true),
 genframes(screen)
-
-
-
 
 
 {
@@ -43,15 +39,14 @@ void Manager::play()
         }
       }
       draw();
-     
+       
       update();
       
       }
 
   ground.freesurface(); 
   fball.freesurface();  
-  fball1.freesurface();
- // gpost.freesurface();   
+    
 
 
       
@@ -68,14 +63,22 @@ void Manager::draw() const {
 }
 
 void Manager::update() {
- bool update=fball.update();
- //bool update1=fball1.update1();
-  if(update && makeVideo){
-    genframes.makeFrame();
+ 
 
+  bool update =fball.update();
+  
+  if(( makeVideo) && (genframes.getFrameCount() <genframes.getMaxFrames()) ){
+   
+  //bool update1=fball.printmessage();
+    if(update )
+    {
+    genframes.makeFrame();
+    }
+    /*else if(fball.getPrintGoal()){
+      genframes.makeFrame();
+    }*/
   }
-  
-  
+
    
   // always update viewport last
 }

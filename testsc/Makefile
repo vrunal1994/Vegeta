@@ -1,7 +1,7 @@
 # Change the following values to suit your system.
 
 CFLAGS=`sdl-config --cflags` -g -W -Wall -Weffc++ -Wextra -pedantic -O0
-SDL_LIB=`sdl-config --libs` -lSDL_ttf -lSDL_image 
+SDL_LIB=`sdl-config --libs` -lSDL_ttf -lSDL_image -lSDL_gfx
 CCC=g++
 
 OBJECTS = iomanager.o Manager.o ground.o football.o goalpost.o generateFrames.o

@@ -9,8 +9,9 @@ Football(const std::string& imagepath);
   bool update();
   void freesurface();
   void draw() const;
-  void draw1() const;
-  bool update1();
+
+  bool getPrintGoal() const { return printgoal; }
+  
 private:
   const IOManager& io;
   bool setColorKey;
@@ -18,8 +19,9 @@ private:
   SDL_Surface* image;
   float imagewidth;
   float imageheight;
-  float imagewidth1;
-  float imageheight1;
+  
+  float textwidth;
+  float textheight;
   const float INCR_X;
   const float X_VELOCITY;
   const float Width;
@@ -28,6 +30,7 @@ private:
 
   GenerateFrames genframes;
    bool printgoal;
+   int angle;
   Football(const Football&);
   Football& operator=(const Football&);
 };

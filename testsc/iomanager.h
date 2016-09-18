@@ -18,7 +18,7 @@ public:
   SDL_Surface* loadAndSet(const string& filename, bool setcolorkey) const;
 
   void printMessageAt(const string& msg, Sint16 x, Sint16 y) const;
-  void printMessageCenteredAt(const string& msg, Sint16 y) const;
+  void printMessageCenteredAt(const string& msg, Sint16 y,int angle) const;
   void printStringAfterMessage(const string&, Uint32 x, Uint32 y) const;
 
   template <typename T>
