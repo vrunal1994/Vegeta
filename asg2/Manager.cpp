@@ -15,7 +15,7 @@ io( IOManager::getInstance() ),
 screen(io.getScreen()),
 table("images/snookertable.png"),
 ball("images/blueball.png"),
-makeVideo(false),
+makeVideo(true),
 genframes(screen)
 
 
