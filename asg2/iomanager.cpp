@@ -17,8 +17,7 @@ IOManager::IOManager( ) :
    
     screen(SDL_SetVideoMode(viewWidth, viewHeight, 0, SDL_DOUBLEBUF)),
     font( NULL ), 
-    color(),
-    inputString("")  
+    color()
 {
   if (screen == NULL) { 
     throw string("Unable to set video mode; screen is NULL in IOMAnager"); 
@@ -75,40 +74,6 @@ void IOManager::printMessageAt(const string& msg, Sint16 x, Sint16 y) const {
    }
 }
 
-void IOManager::printMessageCenteredAt( const string& msg, Sint16 y ) const {
-   SDL_Surface *stext = TTF_RenderText_Blended(font, msg.c_str(), color);
-   if (stext) {
-     Sint16 x = ( viewWidth - stext->w ) / 2;
-     SDL_Rect dest = {x,y,0,0};
-    /* SDL_Surface* rotatedimage=rotozoomSurface(stext,angle,
-    1.0,0);*/
-     SDL_BlitSurface( stext, NULL, screen, &dest );
-     SDL_FreeSurface(stext);
-    // SDL_FreeSurface(rotatedimage);
-   }
-   else {
-     throw 
-     string("Couldn't allocate text sureface in printMessageCenteredAt");
-   }
-}
 
-void IOManager::printStringAfterMessage( const string& msg,
-       Uint32 x, Uint32 y ) const {
-   printMessageAt(msg+inputString, x, y);
-}
 
-void IOManager::buildString(SDL_Event event) {
-  if( inputString.size() <= MAX_STRING_SIZE) {
-    unsigned ch = event.key.keysym.sym;
-    if ( isalpha(ch) || isdigit(ch) || ch == ' ') {
-      inputString += char(event.key.keysym.unicode);
-    }
-  }     
-  if( event.key.keysym.sym == SDLK_BACKSPACE
-      && inputString.length() > 0 ) {
-      // remove a character from the end
-      int length = inputString.size();
-      inputString.erase( length - 1 );
-  }
-}
 

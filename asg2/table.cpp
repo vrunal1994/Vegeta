@@ -6,7 +6,7 @@
 
 Table::Table(const std::string& name):
 io( IOManager::getInstance() ),
-setColorKey(true),
+setColorKey(false),
 screen(io.getScreen()),
 image(io.loadAndSet(name,setColorKey)),
 imagewidth(0),

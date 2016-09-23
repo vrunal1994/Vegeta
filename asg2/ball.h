@@ -29,7 +29,7 @@ private:
   const unsigned int DT;
   
    bool printgoal;
-   int angle;
+  
   Ball(const Ball&);
   Ball& operator=(const Ball&);
 };

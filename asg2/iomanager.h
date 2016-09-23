@@ -18,33 +18,7 @@ public:
   SDL_Surface* loadAndSet(const string& filename, bool setcolorkey) const;
 
   void printMessageAt(const string& msg, Sint16 x, Sint16 y) const;
-  void printMessageCenteredAt(const string& msg, Sint16 y) const;
-  void printStringAfterMessage(const string&, Uint32 x, Uint32 y) const;
-
-  template <typename T>
-  void printMessageValueAt(const string& msg, T value, 
-       Sint16 x, Sint16 y) const {
-     std::stringstream strm;
-     std::string message = msg;
-     strm << message << value << "\0";
-     message = strm.str();
-     SDL_Rect dest = {x,y,0,0};
-     SDL_Surface *stext = 
-         TTF_RenderText_Blended(font, message.c_str(), color);
-     if (stext) {
-       SDL_BlitSurface( stext, NULL, screen, &dest );
-       SDL_FreeSurface(stext);
-     }
-     else {
-       throw 
-       string("Couldn't allocate text sureface in printMessageValueAt");
-     }
-}
-
-
-  void buildString(SDL_Event);
-  void clearString() { inputString = ""; }
-  const string& getString() const { return inputString; }
+  
 private:
   IOManager();
   IOManager(const IOManager&);
@@ -56,6 +30,6 @@ private:
   SDL_Surface * screen;
   TTF_Font *font;
   SDL_Color color;
-  string inputString;
+  
 };
 #endif
