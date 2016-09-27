@@ -54,6 +54,8 @@ void Clock::display() const {
     lastFrames = frames - oldFrames;
     oldFrames = frames;
   }
+  IOManager::getInstance().
+    printMessageValueAt("fps: ", getFps(), 100, 10);
   IOManager::getInstance()
     .printMessageValueAt("seconds: ", seconds, 10, 30);
   IOManager::getInstance()
@@ -70,6 +72,12 @@ void Clock::toggleSloMo() {
     sloMo = false;
   }
 }
+
+int Clock::getFps() const { 
+  if ( getSeconds() > 0 && frames > 0) return frames/getSeconds();  
+  return 0;
+}
+
 
 unsigned int Clock::getTicks() const { 
   if (paused) return timeAtPause;

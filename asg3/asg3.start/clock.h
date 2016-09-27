@@ -35,6 +35,7 @@ private:
 
   bool isStarted() const { return started; }
   bool isPaused() const  { return paused;  }
+  int getFps() const;
   unsigned int getFrames() const  { return frames;  }
   unsigned int getSeconds() const { return getTicks()/1000;  }
   unsigned int capFrameRate() const;

@@ -46,7 +46,7 @@ void Manager::draw() const {
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
   }
-
+io.printMessageValueAt("fps ", clock->getFps(), 10, 5);
   io.printMessageValueAt("Seconds: ", clock->getSeconds(), 10, 20);
   io.printMessageAt("Press T to switch sprites", 10, 45);
   io.printMessageAt(title, 10, 450);
