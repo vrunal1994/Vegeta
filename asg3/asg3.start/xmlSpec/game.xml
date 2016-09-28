@@ -18,25 +18,25 @@
 
 <world>
   <width>2000</width>
-  <height>503</height>
+  <height>600</height>
 </world>
 
 <back>
-  <file>images/mountainsbg1.png</file>
+  <file>images/bg3.png</file>
   
   <factor>4</factor>
   <transparency>true</transparency>
 </back>
 
 <mountains>
-  <file>images/mountainsbg2.png</file>
+  <file>images/bg2.png</file>
  
   <factor>2</factor>
   <transparency>true</transparency>
 </mountains>
 
 <sky>
-  <file>images/mountainsbg3.png</file>
+  <file>images/cls.png</file>
  
   <factor>1</factor>
   <transparency>true</transparency>

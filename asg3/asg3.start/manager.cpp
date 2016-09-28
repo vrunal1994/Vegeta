@@ -21,7 +21,7 @@ Manager::Manager() :
   screen( io.getScreen() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   mountains("mountains", Gamedata::getInstance().getXmlInt("mountains/factor") ),
-  sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
+ sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
   //trees("trees", Gamedata::getInstance().getXmlInt("trees/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(),
