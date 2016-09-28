@@ -26,7 +26,7 @@ Manager::Manager() :
   sprites(),
   currentSprite(0),
 
-  makeVideo( false ),
+  makeVideo( true ),
   frameCount( 0 ),
   username(  Gamedata::getInstance().getXmlStr("username") ),
   title( Gamedata::getInstance().getXmlStr("screenTitle") ),
