@@ -21,6 +21,7 @@ private:
   World world;
   World mountains;
   World sky;
+ // World trees;
   Viewport& viewport;
 
   std::vector<Drawable*> sprites;

@@ -22,11 +22,12 @@ Manager::Manager() :
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   mountains("mountains", Gamedata::getInstance().getXmlInt("mountains/factor") ),
   sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
+  //trees("trees", Gamedata::getInstance().getXmlInt("trees/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(),
   currentSprite(0),
 
-  makeVideo( true ),
+  makeVideo( false ),
   frameCount( 0 ),
   username(  Gamedata::getInstance().getXmlStr("username") ),
   title( Gamedata::getInstance().getXmlStr("screenTitle") ),
@@ -50,6 +51,7 @@ void Manager::draw() const {
   world.draw();
   mountains.draw();
   sky.draw();
+  //trees.draw();
   clock.display();
 
   for (unsigned i = 0; i < sprites.size(); ++i) {
@@ -100,6 +102,7 @@ void Manager::update() {
   world.update();
   mountains.update();
   sky.update();
+  //trees.update();
   viewport.update(); // always update viewport last
 }
 
