@@ -16,6 +16,11 @@
   <height>480</height>
 </view>
 
+<clock>
+  <fpsLoc x="10" y="10"/>
+  <secondsLoc x="10" y="30"/>
+</clock>
+
 <world>
   <width>2000</width>
   <height>600</height>
