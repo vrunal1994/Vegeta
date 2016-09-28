@@ -6,12 +6,12 @@
 #include "gamedata.h"
 #include "ioManager.h"
 
-Clock* Clock::getInstance() {
+Clock& Clock::getInstance() {
   if ( SDL_WasInit(SDL_INIT_VIDEO) == 0) {
     throw std::string("Must init SDL before Clock");
   }
-  if ( instance == NULL) instance = new Clock; 
-  return instance;
+  static Clock clock; 
+  return clock;
 }
 
 Clock::Clock() :
@@ -55,11 +55,11 @@ void Clock::display() const {
     oldFrames = frames;
   }
   IOManager::getInstance().
-    printMessageValueAt("fps: ", getFps(), 100, 10);
+    printMessageValueAt("fps: ", getFps(), 10, 10);
   IOManager::getInstance()
     .printMessageValueAt("seconds: ", seconds, 10, 30);
   IOManager::getInstance()
-    .printMessageValueAt("frames in sec: ", lastFrames, 10, 50);
+    .printMessageValueAt("frames in sec: ", lastFrames, 10, 70);
 }
 
 void Clock::toggleSloMo() {
@@ -104,13 +104,13 @@ unsigned int Clock::capFrameRate() const {
   SDL_Delay( delay );
   return delay;
 }
-
-Clock& Clock::operator++() { 
-  if ( !paused ) {
-    ++frames; 
-  }
-  return *this;
+void Clock::update() { 
+  if ( paused ) return;
+  ++frames;
+  
 }
+
+
 
 void Clock::start() { 
   started = true; 

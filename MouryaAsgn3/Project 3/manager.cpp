@@ -40,7 +40,7 @@ Manager::Manager() :
   SDL_WM_SetCaption(title.c_str(), NULL);
   atexit(SDL_Quit);
 
-  sprites.push_back( new MultiSprite("Pig") );
+  sprites.push_back( new MultiSprite("bird") );
 
   sprites.push_back( new TwoWayMultiSprite("bird","bird1") );
   unsigned int n = Gamedata::getInstance().getXmlInt("numberOfSprites"); 

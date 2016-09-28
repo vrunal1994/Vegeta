@@ -51,7 +51,7 @@
   <startLoc x="120" y="140"/>
 
   <frames>6</frames>
-  <frameInterval>20</frameInterval>
+  <frameInterval>24</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -63,16 +63,16 @@
 </Pig>
 
 <bird>
-  <file>images/bird.png</file>
+  <file>images/bulbasaursprite.png</file>
   <startLoc x="120" y="140"/>
 
-  <frames>4</frames>
-  <frameInterval>20</frameInterval>
+  <frames>5</frames>
+  <frameInterval>15</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
   <width>100</width>
-  <height>92</height>
+  <height>88</height>
   <speedX>-100</speedX>
   <speedY>100</speedY>
   <transparency>true</transparency>
@@ -82,20 +82,20 @@
   <file>images/bird1.png</file>
   <startLoc x="120" y="140"/>
 
-  <frames>4</frames>
+  <frames>5</frames>
   <frameInterval>20</frameInterval>
 
   <srcX>100</srcX>
   <srcY>0</srcY>
   <width>100</width>
-  <height>92</height>
+  <height>88</height>
   <speedX>-100</speedX>
   <speedY>100</speedY>
   <transparency>true</transparency>
 </bird1>
 
 <ball>
-  <file>images/ball1.png</file>
+  <file>images/Poke Ball.png</file>
   <srcX>0</srcX>
   <srcY>0</srcY>
   <width>60</width>

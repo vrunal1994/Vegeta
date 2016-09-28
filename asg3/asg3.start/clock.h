@@ -5,13 +5,29 @@ class Manager;
 
 class Clock {
 public:
-  static Clock* getInstance();
+  static Clock& getInstance();
   unsigned int getTicks() const;
   unsigned int getTotalTicks() const { return sumOfAllTicks; }
+  void toggleSloMo();
+  
+
+  bool isStarted() const { return started; }
+  bool isPaused() const  { return paused;  }
+  int getFps() const;
+  unsigned int getFrames() const  { return frames;  }
+  unsigned int getSeconds() const { return getTicks()/1000;  }
+  unsigned int capFrameRate() const;
+
+  void start();
+  void pause();
+  void unpause();
+  void display() const;
+  void update();
+  unsigned int getElapsedTicks();
 
 private:
-  friend class Manager;
-  static Clock* instance;
+  //friend class Manager;
+  //static Clock* instance;
 
   bool started;
   bool paused;
@@ -29,21 +45,9 @@ private:
   unsigned int prevTicks;
   unsigned int ticks;
 
-  unsigned int getElapsedTicks();
-  Clock& operator++();
-  void toggleSloMo();
-
-  bool isStarted() const { return started; }
-  bool isPaused() const  { return paused;  }
-  int getFps() const;
-  unsigned int getFrames() const  { return frames;  }
-  unsigned int getSeconds() const { return getTicks()/1000;  }
-  unsigned int capFrameRate() const;
-
-  void start();
-  void pause();
-  void unpause();
-  void display() const;
+  
+  //Clock& operator++();
+  
 
   Clock();
   Clock(const Clock&);

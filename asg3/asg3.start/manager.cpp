@@ -42,12 +42,15 @@ Manager::Manager() :
 }
 
 void Manager::draw() const {
+  
   world.draw();
+  clock.display();
+  
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
   }
-io.printMessageValueAt("fps ", clock->getFps(), 10, 5);
-  io.printMessageValueAt("Seconds: ", clock->getSeconds(), 10, 20);
+/*io.printMessageValueAt("fps ", clock.getFps(), 10, 5);
+  io.printMessageValueAt("Seconds: ", clock.getSeconds(), 10, 20);*/
   io.printMessageAt("Press T to switch sprites", 10, 45);
   io.printMessageAt(title, 10, 450);
   viewport.draw();
@@ -71,14 +74,15 @@ void Manager::switchSprite() {
 }
 
 void Manager::update() {
-  ++(*clock);
-  Uint32 ticks = clock->getElapsedTicks();
+  clock.update();
+  
+  Uint32 ticks = clock.getElapsedTicks();
 
-  static unsigned int lastSeconds = clock->getSeconds();
-  if ( clock->getSeconds() - lastSeconds == 5 ) {
-    lastSeconds = clock->getSeconds();
+  /*static unsigned int lastSeconds = clock.getSeconds();
+  if ( clock.getSeconds() - lastSeconds == 5 ) {
+    lastSeconds = clock.getSeconds();
     //switchSprite();
-  }
+  }*/
 
   for (unsigned int i = 0; i < sprites.size(); ++i) {
     sprites[i]->update(ticks);
@@ -107,11 +111,11 @@ void Manager::play() {
           switchSprite();
         }
         if ( keystate[SDLK_s] ) {
-          clock->toggleSloMo();
+          clock.toggleSloMo();
         }
         if ( keystate[SDLK_p] ) {
-          if ( clock->isPaused() ) clock->unpause();
-          else clock->pause();
+          if ( clock.isPaused() ) clock.unpause();
+          else clock.pause();
         }
         if (keystate[SDLK_F4] && !makeVideo) {
           std::cout << "Making video frames" << std::endl;
