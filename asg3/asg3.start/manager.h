@@ -19,6 +19,8 @@ private:
 
   SDL_Surface * const screen;
   World world;
+  World mountains;
+  World sky;
   Viewport& viewport;
 
   std::vector<Drawable*> sprites;

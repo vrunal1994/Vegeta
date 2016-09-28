@@ -20,6 +20,8 @@ Manager::Manager() :
   clock( Clock::getInstance() ),
   screen( io.getScreen() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
+  mountains("mountains", Gamedata::getInstance().getXmlInt("mountains/factor") ),
+  sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(),
   currentSprite(0),
@@ -43,9 +45,13 @@ Manager::Manager() :
 
 void Manager::draw() const {
   
-  world.draw();
-  clock.display();
   
+  
+  world.draw();
+  mountains.draw();
+  sky.draw();
+  clock.display();
+
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
   }
@@ -90,7 +96,10 @@ void Manager::update() {
   if ( makeVideo && frameCount < frameMax ) {
     makeFrame();
   }
+
   world.update();
+  mountains.update();
+  sky.update();
   viewport.update(); // always update viewport last
 }
 
