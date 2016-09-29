@@ -8,7 +8,7 @@
 <frameCap>60</frameCap>
 <framesAreCapped>true</framesAreCapped>
 
-<frameMax>400</frameMax>
+<frameMax>200</frameMax>
 <username>sravira</username>
 
 <view>
@@ -18,7 +18,7 @@
 
 <world>
   <width>2000</width>
-  <height>600</height>
+  <height>503</height>
 </world>
 
 <back>
@@ -41,6 +41,12 @@
   <factor>1</factor>
   <transparency>true</transparency>
 </sky>
+<trees>
+  <file>images/layer4.png</file>
+ 
+  <factor>1</factor>
+  <transparency>true</transparency>
+</trees>
 
 
 
