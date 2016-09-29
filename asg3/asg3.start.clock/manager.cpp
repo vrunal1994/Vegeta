@@ -106,6 +106,7 @@ void Manager::update() {
 void Manager::play() {
   SDL_Event event;
   bool done = false;
+  clock.start();
 
   while ( not done ) {
     while ( SDL_PollEvent(&event) ) {
@@ -116,15 +117,16 @@ void Manager::play() {
           done = true;
           break;
         }
+       
         if ( keystate[SDLK_t] ) {
           switchSprite();
-        }
-        if ( keystate[SDLK_s] ) {
-          clock.toggleSloMo();
         }
         if ( keystate[SDLK_p] ) {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
+        }
+        if (keystate[SDLK_F3]) {
+          clock.toggleSloMo();
         }
         if (keystate[SDLK_F4] && !makeVideo) {
           std::cout << "Making video frames" << std::endl;

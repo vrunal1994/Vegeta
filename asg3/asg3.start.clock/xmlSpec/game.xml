@@ -8,7 +8,7 @@
 <frameCap>60</frameCap>
 <framesAreCapped>true</framesAreCapped>
 
-<frameMax>400</frameMax>
+<frameMax>200</frameMax>
 <username>sravira</username>
 
 <view>
@@ -22,7 +22,7 @@
 </clock>
 
 <world>
-  <width>2000</width>
+  <width>1000</width>
   <height>600</height>
 </world>
 
