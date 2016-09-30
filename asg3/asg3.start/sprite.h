@@ -2,7 +2,7 @@
 #define SPRITE__H
 #include <string>
 #include "drawable.h"
-
+class ExplodingSprite;
 class Sprite : public Drawable {
 public:
   Sprite(const std::string&);
@@ -16,8 +16,10 @@ public:
   virtual void draw() const;
 
   virtual void update(Uint32 ticks);
+  void explode();
 
 private:
+   ExplodingSprite* explosion;
   const Frame * frame;
   int frameWidth;
   int frameHeight;

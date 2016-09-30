@@ -46,7 +46,7 @@ Frame* FrameFactory::getFrame(const std::string& name) {
           gdata.getXmlStr(name+"/file"),
           gdata.getXmlBool(name+"/transparency"));
     surfaces[name] = surface;
-    Frame * const frame =new Frame(surface);
+    Frame * const frame =new Frame(name,surface);
     frames[name] = frame;
     return frame;
   }
@@ -80,7 +80,7 @@ std::vector<Frame*> FrameFactory::getFrames(const std::string& name) {
    surf = ExtractSurface::getInstance().
                get(surface, width, height, frameX, 0); 
     surfaces.push_back( surf );
-    frames.push_back( new Frame(surf) );
+    frames.push_back( new Frame(name,surf) );
   }
   SDL_FreeSurface(surface);
   multiSurfaces[name] = surfaces;

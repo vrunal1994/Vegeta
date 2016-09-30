@@ -18,27 +18,30 @@
 </view>
 
 <world>
-  <width>1500</width>
+  <width>2000</width>
   <height>683</height>
 </world>
 
 <back>
   <file>images/newmountains.png</file>
-  
+  <width>2000</width>
+  <height>683</height>
   <factor>2</factor>
   <transparency>true</transparency>
 </back>
 
 <mountains>
   <file>images/newtrees.png</file>
- 
+ <width>2000</width>
+  <height>683</height>
   <factor>1</factor>
   <transparency>true</transparency>
 </mountains>
 
 <sky>
   <file>images/bg1.png</file>
- 
+ <width>2000</width>
+  <height>683</height>
   <factor>1</factor>
   <transparency>true</transparency>
 </sky>
@@ -65,7 +68,7 @@
   <startLoc x="120" y="140"/>
 
   <frames>5</frames>
-  <frameInterval>24</frameInterval>
+  <frameInterval>20</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -81,7 +84,7 @@
   <startLoc x="120" y="140"/>
 
   <frames>4</frames>
-  <frameInterval>24</frameInterval>
+  <frameInterval>20</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -94,10 +97,10 @@
 
 <charmander1>
   <file>images/charmelonsprite.png</file>
-  <startLoc x="120" y="140"/>
+  <startLoc x="200" y="240"/>
 
   <frames>4</frames>
-  <frameInterval>24</frameInterval>
+  <frameInterval>20</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>

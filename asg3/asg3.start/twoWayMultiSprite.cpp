@@ -19,10 +19,15 @@ const Frame* TwoWayMultiSprite::getFrame() const
 
 const std::vector<Frame *> TwoWayMultiSprite::getframes() const
 {
-   if (velocityX() > 0)
+   if (velocityX() > 0){
+      std::cout<<"Right frame" <<std::endl;
      return frames_RHS;
+   }
    else
+   {
+    std::cout<<"Left frame" <<std::endl;
      return frames_LHS;
+   }
 }
 
 TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name1,const std::string& name2):
