@@ -5,6 +5,7 @@
 #include "sprite.h"
 #include "gamedata.h"
 #include "manager.h"
+#include "twoWayMultiSprite.h"
 
 Manager::~Manager() { 
   // These deletions eliminate "definitely lost" and
@@ -12,6 +13,11 @@ Manager::~Manager() {
   for (unsigned i = 0; i < sprites.size(); ++i) {
     delete sprites[i];
   }
+  /*std::list<Drawable*>::const_iterator ptr = sprites.begin();
+  while ( ptr != sprites.end() ) {
+    delete (*ptr);
+    ++ptr;
+  }*/
 }
 
 Manager::Manager() :
@@ -21,11 +27,11 @@ Manager::Manager() :
   screen( io.getScreen() ),
   world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
   mountains("mountains", Gamedata::getInstance().getXmlInt("mountains/factor") ),
- sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
+ //sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
   //trees("trees", Gamedata::getInstance().getXmlInt("trees/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(),
-  currentSprite(0),
+  currentSprite(),
 
   makeVideo( false ),
   frameCount( 0 ),
@@ -38,10 +44,20 @@ Manager::Manager() :
   }
   SDL_WM_SetCaption(title.c_str(), NULL);
   atexit(SDL_Quit);
-  sprites.push_back( new MultiSprite("spinstar") );
-  sprites.push_back( new Sprite("star") );
-  sprites.push_back( new Sprite("greenorb") );
+  unsigned int n = Gamedata::getInstance().getXmlInt("numberOfSprites"); 
+
+  sprites.push_back( new MultiSprite("charmander") );
+  sprites.push_back( new MultiSprite("bulbasaur") );
+  sprites.push_back( new TwoWayMultiSprite("charmander","charmander1") );
+  //sprites.push_back( new Sprite("star") );
+  //sprites.push_back( new Sprite("greenorb") );
+ /* for(unsigned int  i=0;i<n;i++){
+  sprites.push_back( 
+    new Sprite("pokeball") );
+  }*/
+   //currentSprite = sprites.begin();
   viewport.setObjectToTrack(sprites[currentSprite]);
+  //viewport.setObjectToTrack(*currentSprite);
 }
 
 void Manager::draw() const {
@@ -50,10 +66,14 @@ void Manager::draw() const {
   
   world.draw();
   mountains.draw();
-  sky.draw();
+  //sky.draw();
   //trees.draw();
   clock.display();
-
+/*std::list<Drawable*>::const_iterator ptr = sprites.begin();
+  while ( ptr != sprites.end() ) {
+    (*ptr)->draw();
+    ++ptr;
+  }*/
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
   }
@@ -79,6 +99,12 @@ void Manager::makeFrame() {
 void Manager::switchSprite() {
   currentSprite = (currentSprite+1) % sprites.size();
   viewport.setObjectToTrack(sprites[currentSprite]);
+/*
+  ++currentSprite;
+  if ( currentSprite == sprites.end() ) {
+    currentSprite = sprites.begin();
+  }
+  viewport.setObjectToTrack(*currentSprite);*/
 }
 
 void Manager::update() {
@@ -91,7 +117,11 @@ void Manager::update() {
     lastSeconds = clock.getSeconds();
     //switchSprite();
   }*/
-
+/*std::list<Drawable*>::const_iterator ptr = sprites.begin();
+  while ( ptr != sprites.end() ) {
+    (*ptr)->update(ticks);
+    ++ptr;
+  }*/
   for (unsigned int i = 0; i < sprites.size(); ++i) {
     sprites[i]->update(ticks);
   }
@@ -101,7 +131,7 @@ void Manager::update() {
 
   world.update();
   mountains.update();
-  sky.update();
+  //sky.update();
   //trees.update();
   viewport.update(); // always update viewport last
 }
