@@ -4,11 +4,15 @@
 #include "frameFactory.h"
 
 Sprite::Sprite(const std::string& name) :
-  Drawable(name,
-           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x"), 
-                    Gamedata::getInstance().getXmlInt(name+"/startLoc/y")), 
-           Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX"), 
-                    Gamedata::getInstance().getXmlInt(name+"/speedY")) 
+   Drawable(name,
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/startLoc/x")+Gamedata::getInstance().getRandInRange(0,500), 
+ 
+                    Gamedata::getInstance().getXmlInt(name+"/startLoc/y")+Gamedata::getInstance().getRandInRange(0,500) 
+), 
+           Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX")+Gamedata::getInstance().getRandInRange(-195,300), 
+ 
+                    Gamedata::getInstance().getXmlInt(name+"/speedY")+Gamedata::getInstance().getRandInRange(0,300)
+) 
            ),
   frame( FrameFactory::getInstance().getFrame(name) ),
   frameWidth(frame->getWidth()),
