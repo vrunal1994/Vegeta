@@ -23,17 +23,17 @@
 </world>
 
 <back>
-  <file>images/mountains.png</file>
+  <file>images/newmountains.png</file>
   
   <factor>2</factor>
-  <transparency>false</transparency>
+  <transparency>true</transparency>
 </back>
 
 <mountains>
-  <file>images/trees.png</file>
+  <file>images/newtrees.png</file>
  
   <factor>1</factor>
-  <transparency>false</transparency>
+  <transparency>true</transparency>
 </mountains>
 
 <sky>
