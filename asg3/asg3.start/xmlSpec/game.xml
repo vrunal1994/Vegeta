@@ -65,7 +65,7 @@
 
 <bulbasaur>
   <file>images/bulbasaursprite.png</file>
-  <startLoc x="30" y="450"/>
+  <startLoc x="0" y="590"/>
 
   <frames>5</frames>
   <frameInterval>20</frameInterval>

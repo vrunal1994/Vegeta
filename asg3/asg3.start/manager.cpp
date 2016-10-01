@@ -47,10 +47,10 @@ Manager::Manager() :
   unsigned int n = Gamedata::getInstance().getXmlInt("numberOfSprites"); 
 
   //sprites.push_back( new MultiSprite("charmander") );
-  sprites.push_back( new MultiSprite("bulbasaur") );
+ 
   //sprites.push_back( new Sprite("pokeball") );
   sprites.push_back( new TwoWayMultiSprite("charmander","charmander1") );
-  
+   sprites.push_back( new MultiSprite("bulbasaur") );
   //sprites.push_back( new Sprite("greenorb") );
   for(unsigned int  i=0;i<n;i++){
   sprites.push_back( 
