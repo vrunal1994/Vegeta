@@ -25,7 +25,7 @@ const std::vector<Frame *> TwoWayMultiSprite::getframes() const
      return frames_LHS;
 }
 
-TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name1, const std::string& name2):
+TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name1,const std::string& name2):
    Drawable(name1, Vector2f(Gamedata::getInstance().getXmlInt(name1 + "/startLoc/x"), 
            Gamedata::getInstance().getXmlInt(name1 + "/startLoc/y")), 
            Vector2f(Gamedata::getInstance().getXmlInt(name1 + "/speedX"), 

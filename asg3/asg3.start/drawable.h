@@ -46,6 +46,7 @@ public:
   virtual bool collidedWith(const Drawable*) const { 
     throw std::string("No collidedWith");  
   }
+   virtual void explode() { throw name+std::string(" can't explode"); }
 
 private:
   std::string name;

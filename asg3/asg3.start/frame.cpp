@@ -4,26 +4,40 @@
 #include "ioManager.h"
 #include "viewport.h"
 
-Frame::Frame( SDL_Surface* surf ) : 
+Frame::Frame( const std::string& name,SDL_Surface* surf ) : 
   screen(IOManager::getInstance().getScreen()),
   surface( surf ),
-  width(surf->w), 
-  height(surf->h)
+  width(Gamedata::getInstance().getXmlInt(name+"/width")), 
+  height(Gamedata::getInstance().getXmlInt(name+"/height")),
+  sourceX(0),
+  sourceY(0)
 { }
+
+Frame::Frame( SDL_Surface* spr, Uint16 w, Uint16 h,
+              Sint16 src_x, Sint16 src_y) :
+  screen(IOManager::getInstance().getScreen()),
+  surface(spr), 
+  width(w), height(h),
+  sourceX(src_x), sourceY(src_y) {
+}
 
 Frame::Frame( const Frame& frame ) :
   screen(frame.screen),
   surface(frame.surface), 
-  width(surface->w), 
-  height(surface->h)
+  width(frame.width), 
+  height(frame.height),
+  sourceX(frame.sourceX), 
+  sourceY(frame.sourceY) 
 { }
 
 
 Frame& Frame::operator=(const Frame& rhs) {
   surface = rhs.surface;
   screen = rhs.screen;
-  width = surface->w;
-  height = surface->h;
+  width = rhs.width;
+  height = rhs.height;
+  sourceX = rhs.sourceX;
+  sourceY = rhs.sourceY;
   return *this;
 }
 

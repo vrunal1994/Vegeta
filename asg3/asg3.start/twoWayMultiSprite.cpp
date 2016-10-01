@@ -1,6 +1,7 @@
 #include "twoWayMultiSprite.h"
 #include "gamedata.h"
 #include "frameFactory.h"
+#include "explodingSprite.h"
 
 void TwoWayMultiSprite::advanceFrame(Uint32 ticks)
 {
@@ -19,10 +20,15 @@ const Frame* TwoWayMultiSprite::getFrame() const
 
 const std::vector<Frame *> TwoWayMultiSprite::getframes() const
 {
-   if (velocityX() > 0)
+   if (velocityX() > 0){
+      std::cout<<"Right frame" <<std::endl;
      return frames_RHS;
+   }
    else
+   {
+    std::cout<<"Left frame" <<std::endl;
      return frames_LHS;
+   }
 }
 
 TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name1,const std::string& name2):
@@ -30,7 +36,8 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name1,const std::string
            Gamedata::getInstance().getXmlInt(name1 + "/startLoc/y")), 
            Vector2f(Gamedata::getInstance().getXmlInt(name1 + "/speedX"), 
            Gamedata::getInstance().getXmlInt(name1 + "/speedY"))),
-	   frames_RHS(FrameFactory::getInstance().getFrames(name1)),
+	   explosion(NULL),
+     frames_RHS(FrameFactory::getInstance().getFrames(name1)),
 	   frames_LHS(FrameFactory::getInstance().getFrames(name2)),
 	   worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
 	   worldHeight(Gamedata::getInstance().getXmlInt("world/height")),
@@ -43,12 +50,31 @@ TwoWayMultiSprite::TwoWayMultiSprite( const std::string& name1,const std::string
  {}
 
 void TwoWayMultiSprite::draw() const {
+    if (explosion) {
+    explosion->draw();
+    return;
+  }
 	Uint32 x = static_cast<Uint32>(X());
 	Uint32 y = static_cast<Uint32>(Y());
 	getframes()[currentFrame]->draw(x, y);
 }
 
+void TwoWayMultiSprite::explode() { 
+  if ( explosion ) return;
+  Sprite sprite(getName(), getPosition(), getVelocity(), getFrame());
+  explosion = new ExplodingSprite(sprite); 
+}
+
 void TwoWayMultiSprite::update(Uint32 ticks) {
+   if ( explosion ) {
+    explosion->update(ticks);
+    if ( explosion->chunkCount() == 0 ) {
+      delete explosion;
+      explosion = NULL;
+    }
+    return;
+  }
+
      advanceFrame(ticks);
  Vector2f incr = getVelocity() * static_cast<float>(ticks) * 0.001;
   setPosition(getPosition() + incr);

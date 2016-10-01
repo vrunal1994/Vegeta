@@ -18,27 +18,30 @@
 </view>
 
 <world>
-  <width>1500</width>
+  <width>2000</width>
   <height>683</height>
 </world>
 
 <back>
-  <file>images/mountains.png</file>
-  
+  <file>images/newmountains.png</file>
+  <width>2000</width>
+  <height>683</height>
   <factor>2</factor>
-  <transparency>false</transparency>
+  <transparency>true</transparency>
 </back>
 
 <mountains>
-  <file>images/trees.png</file>
- 
+  <file>images/newtrees.png</file>
+ <width>2000</width>
+  <height>683</height>
   <factor>1</factor>
-  <transparency>false</transparency>
+  <transparency>true</transparency>
 </mountains>
 
 <sky>
   <file>images/bg1.png</file>
- 
+ <width>2000</width>
+  <height>683</height>
   <factor>1</factor>
   <transparency>true</transparency>
 </sky>
@@ -62,10 +65,10 @@
 
 <bulbasaur>
   <file>images/bulbasaursprite.png</file>
-  <startLoc x="120" y="140"/>
+  <startLoc x="30" y="450"/>
 
   <frames>5</frames>
-  <frameInterval>24</frameInterval>
+  <frameInterval>20</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -74,6 +77,10 @@
   <speedX>-200</speedX>
   <speedY>200</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </bulbasaur>
 
 <charmander>
@@ -81,7 +88,7 @@
   <startLoc x="120" y="140"/>
 
   <frames>4</frames>
-  <frameInterval>24</frameInterval>
+  <frameInterval>18</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -90,6 +97,10 @@
   <speedX>-100</speedX>
   <speedY>100</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </charmander>
 
 <charmander1>
@@ -97,7 +108,7 @@
   <startLoc x="120" y="140"/>
 
   <frames>4</frames>
-  <frameInterval>24</frameInterval>
+  <frameInterval>18</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -106,6 +117,10 @@
   <speedX>-100</speedX>
   <speedY>100</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </charmander1>
 
 <spinstar>
@@ -144,6 +159,10 @@
   <speedX>100</speedX>
   <speedY>175</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </pokeball>
 
 </GameData>
