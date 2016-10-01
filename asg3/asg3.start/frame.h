@@ -24,8 +24,8 @@ public:
   void draw(Sint16 sx, Sint16 sy, Sint16 dx, Sint16 dy) const;
   void draw(Sint16 x, Sint16 y, double angle) const;
 
-  Uint16 getWidth()  const { return surface->w; }
-  Uint16 getHeight() const { return surface->h; }
+  Uint16 getWidth()  const { return width; }
+  Uint16 getHeight() const { return height; }
   Uint16 getSourceX() const { return sourceX; }
   Uint16 getSourceY() const { return sourceY; }
 private:

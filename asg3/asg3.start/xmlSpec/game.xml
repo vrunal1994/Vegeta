@@ -65,7 +65,7 @@
 
 <bulbasaur>
   <file>images/bulbasaursprite.png</file>
-  <startLoc x="120" y="140"/>
+  <startLoc x="30" y="450"/>
 
   <frames>5</frames>
   <frameInterval>20</frameInterval>
@@ -77,6 +77,10 @@
   <speedX>-200</speedX>
   <speedY>200</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </bulbasaur>
 
 <charmander>
@@ -84,7 +88,7 @@
   <startLoc x="120" y="140"/>
 
   <frames>4</frames>
-  <frameInterval>20</frameInterval>
+  <frameInterval>18</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -93,14 +97,18 @@
   <speedX>-100</speedX>
   <speedY>100</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </charmander>
 
 <charmander1>
   <file>images/charmelonsprite.png</file>
-  <startLoc x="200" y="240"/>
+  <startLoc x="120" y="140"/>
 
   <frames>4</frames>
-  <frameInterval>20</frameInterval>
+  <frameInterval>18</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
@@ -109,6 +117,10 @@
   <speedX>-100</speedX>
   <speedY>100</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </charmander1>
 
 <spinstar>
@@ -147,6 +159,10 @@
   <speedX>100</speedX>
   <speedY>175</speedY>
   <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
 </pokeball>
 
 </GameData>

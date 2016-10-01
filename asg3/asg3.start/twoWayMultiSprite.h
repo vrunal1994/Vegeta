@@ -2,6 +2,7 @@
 #include <vector>
 #include "drawable.h"
 
+class ExplodingSprite;
 class TwoWayMultiSprite : public Drawable {
 public:
     TwoWayMultiSprite(const std::string&, const std::string&);
@@ -13,8 +14,9 @@ public:
   virtual void update(Uint32 ticks);
   virtual const Frame* getFrame() const; 
  const std::vector<Frame *> getframes() const;
+ void explode();
 protected: 
-
+  ExplodingSprite* explosion;
    const std::vector<Frame *> frames_RHS;
   const std::vector<Frame *> frames_LHS;
   int worldWidth;

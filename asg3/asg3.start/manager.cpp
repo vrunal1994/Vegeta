@@ -31,7 +31,7 @@ Manager::Manager() :
   //trees("trees", Gamedata::getInstance().getXmlInt("trees/factor") ),
   viewport( Viewport::getInstance() ),
   sprites(),
-  currentSprite(),
+  currentSprite(0),
 
   makeVideo( false ),
   frameCount( 0 ),
@@ -46,15 +46,16 @@ Manager::Manager() :
   atexit(SDL_Quit);
   unsigned int n = Gamedata::getInstance().getXmlInt("numberOfSprites"); 
 
-  sprites.push_back( new MultiSprite("charmander") );
+  //sprites.push_back( new MultiSprite("charmander") );
   sprites.push_back( new MultiSprite("bulbasaur") );
+  //sprites.push_back( new Sprite("pokeball") );
   sprites.push_back( new TwoWayMultiSprite("charmander","charmander1") );
-  sprites.push_back( new Sprite("pokeball") );
+  
   //sprites.push_back( new Sprite("greenorb") );
- /* for(unsigned int  i=0;i<n;i++){
+  for(unsigned int  i=0;i<n;i++){
   sprites.push_back( 
     new Sprite("pokeball") );
-  }*/
+  }
    //currentSprite = sprites.begin();
   viewport.setObjectToTrack(sprites[currentSprite]);
   //viewport.setObjectToTrack(*currentSprite);
@@ -150,7 +151,9 @@ void Manager::play() {
           break;
         }
          if ( keystate[SDLK_0] ) {
-          sprites[0]->explode();
+          for (unsigned int i = 0; i < sprites.size(); ++i) {
+    sprites[i]->explode();
+  }
         }
         if ( keystate[SDLK_1] ) {
           sprites[1]->explode();

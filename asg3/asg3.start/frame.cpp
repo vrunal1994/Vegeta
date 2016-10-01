@@ -24,8 +24,8 @@ Frame::Frame( SDL_Surface* spr, Uint16 w, Uint16 h,
 Frame::Frame( const Frame& frame ) :
   screen(frame.screen),
   surface(frame.surface), 
-  width(surface->w), 
-  height(surface->h),
+  width(frame.width), 
+  height(frame.height),
   sourceX(frame.sourceX), 
   sourceY(frame.sourceY) 
 { }
@@ -34,8 +34,8 @@ Frame::Frame( const Frame& frame ) :
 Frame& Frame::operator=(const Frame& rhs) {
   surface = rhs.surface;
   screen = rhs.screen;
-  width = surface->w;
-  height = surface->h;
+  width = rhs.width;
+  height = rhs.height;
   sourceX = rhs.sourceX;
   sourceY = rhs.sourceY;
   return *this;
