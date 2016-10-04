@@ -47,7 +47,7 @@ setclang:
 setgcc:
 	@echo "Setting g++"
 	$(eval CXX = g++)
-	$(eval CXX_LINK = g++)
+	$(eval CXX_LINK = g++ )
 
 # $< refers to the first dependency
 # Uses static pattern rule to keep from compiling all

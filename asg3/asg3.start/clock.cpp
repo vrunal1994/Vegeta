@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <deque>
+#include <numeric>
+#include <vector>
 #include "clock.h"
 #include "gamedata.h"
 #include "ioManager.h"
@@ -54,12 +57,32 @@ void Clock::display() const {
     lastFrames = frames - oldFrames;
     oldFrames = frames;
   }
+  unsigned int framecount=200;
+  std::deque<unsigned int> capturefps;
+  capturefps.reserve(framecount);
+  if(capturefps.size()<framecount)
+  {
+    for (unsigned int i = 0; i < capturefps.size(); ++i)
+    {
+      /* code */
+      capturefps.push_back(lastFrames);
+    }
+  }
+  else if(capturefps.size()>framecount)
+  {
+    capturefps.pop_front();
+    capturefps.push_back(lastFrames);
+  }
   IOManager::getInstance().
     printMessageValueAt("fps: ", getFps(), 10, 10);
   IOManager::getInstance()
     .printMessageValueAt("seconds: ", seconds, 10, 30);
   IOManager::getInstance()
     .printMessageValueAt("frames in sec: ", lastFrames, 10, 70);
+IOManager::getInstance()
+    .printMessageValueAt("framesnew in sec: ", std::accumulate(capturefps.begin(), capturefps.end(), 0.0) / 
+    capturefps.size(), 10, 90);
+    
 }
 
 void Clock::toggleSloMo() {
@@ -108,6 +131,8 @@ void Clock::update() {
   if ( paused ) return;
   ++frames;
   
+  
+
 }
 
 
