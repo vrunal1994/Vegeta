@@ -83,9 +83,7 @@ void Sprite::explode() {
   explosion = new ExplodingSprite(*this); 
 }
 
-bool Sprite::collidedWith(const Drawable *d ) const{
 
-}
 
 int Sprite::getDistance(const Sprite *obj) const { 
   return hypot(X()-obj->X(), Y()-obj->Y());

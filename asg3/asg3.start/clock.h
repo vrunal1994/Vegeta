@@ -24,11 +24,12 @@ public:
   void display() const;
   void update();
   unsigned int getElapsedTicks();
+ 
 
 private:
   //friend class Manager;
   //static Clock* instance;
-
+ 
   bool started;
   bool paused;
   bool sloMo;

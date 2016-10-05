@@ -57,14 +57,17 @@ void Clock::display() const {
     lastFrames = frames - oldFrames;
     oldFrames = frames;
   }
-  unsigned int framecount=200;
-  std::deque<unsigned int> capturefps;
-  capturefps.reserve(framecount);
+ static std::deque<unsigned int> capturefps;
+  static unsigned int framecount=200;
+ 
+  //capturefps.reserve(framecount);
   if(capturefps.size()<framecount)
   {
-    for (unsigned int i = 0; i < capturefps.size(); ++i)
+    std::cout<<"called consiiton"<<std::endl;
+    for (std::deque< unsigned int>::iterator it = capturefps.begin(); it!=200; ++it)
     {
       /* code */
+      std::cout<<"called inside"<<std::endl;
       capturefps.push_back(lastFrames);
     }
   }
@@ -82,7 +85,8 @@ void Clock::display() const {
 IOManager::getInstance()
     .printMessageValueAt("framesnew in sec: ", std::accumulate(capturefps.begin(), capturefps.end(), 0.0) / 
     capturefps.size(), 10, 90);
-    
+    IOManager::getInstance()
+    .printMessageValueAt("framesnew in sec: ", capturefps.size(), 10, 110);
 }
 
 void Clock::toggleSloMo() {

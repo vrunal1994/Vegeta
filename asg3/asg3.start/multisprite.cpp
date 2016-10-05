@@ -93,9 +93,9 @@ if ( explosion ) {
   float velocityincr=velocityX()* static_cast<float>(ticks) * 0.001;
  /* std::cout<<"incr:"<<velocityincr<<std::endl;
   std::cout<<"vel:"<<getVelocity()<<std::endl;*/
-  std::cout<<"pos"<<X()<<std::endl;
+  //std::cout<<"pos"<<X()<<std::endl;
   X(X()+velocityincr);
-  std::cout<<"pos after increment"<<X()<<std::endl;
+  //std::cout<<"pos after increment"<<X()<<std::endl;
   if ( X() < 0) {
     velocityX( abs( velocityX() ) );
   }
