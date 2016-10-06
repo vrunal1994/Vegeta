@@ -50,23 +50,33 @@ Clock::Clock(const Clock& c) :
 void Clock::display() const { 
   static unsigned int lastFrames = 0;
   static unsigned int oldFrames = 0;
+  static unsigned int counter = 1;
   static unsigned int seconds = getSeconds();
-
+  static unsigned int totalFPS;
+  static int sum=1;
+  std::deque<unsigned int> capturefps(200,0);
   if ( getSeconds() > seconds ) {
     seconds = getSeconds();
     lastFrames = frames - oldFrames;
     oldFrames = frames;
+    totalFPS=totalFPS+lastFrames;
+    counter++;
+    capturefps.push_back(lastFrames);
   }
- static std::deque<unsigned int> capturefps;
-  static unsigned int framecount=200;
+  
+if(frames>200){
+  sum+=capturefps.back();
+}
+
+  //static unsigned int framecount=200;
  
   //capturefps.reserve(framecount);
-  if(capturefps.size()<framecount)
+  /*if(capturefps.size()<framecount)
   {
     std::cout<<"called consiiton"<<std::endl;
     for (std::deque< unsigned int>::iterator it = capturefps.begin(); it!=200; ++it)
     {
-      /* code */
+      
       std::cout<<"called inside"<<std::endl;
       capturefps.push_back(lastFrames);
     }
@@ -75,7 +85,7 @@ void Clock::display() const {
   {
     capturefps.pop_front();
     capturefps.push_back(lastFrames);
-  }
+  }*/
   IOManager::getInstance().
     printMessageValueAt("fps: ", getFps(), 10, 10);
   IOManager::getInstance()
@@ -83,10 +93,9 @@ void Clock::display() const {
   IOManager::getInstance()
     .printMessageValueAt("frames in sec: ", lastFrames, 10, 70);
 IOManager::getInstance()
-    .printMessageValueAt("framesnew in sec: ", std::accumulate(capturefps.begin(), capturefps.end(), 0.0) / 
-    capturefps.size(), 10, 90);
+    .printMessageValueAt("average of all framesnew in sec: ", totalFPS/counter, 10, 90);
     IOManager::getInstance()
-    .printMessageValueAt("framesnew in sec: ", capturefps.size(), 10, 110);
+    .printMessageValueAt("average of 200 framesnew in sec: ", sum/counter, 10, 110);
 }
 
 void Clock::toggleSloMo() {
