@@ -8,7 +8,7 @@
 <frameCap>60</frameCap>
 <framesAreCapped>true</framesAreCapped>
 
-<frameMax>300</frameMax>
+<frameMax>400</frameMax>
 <username>sravira</username>
 <numberOfSprites>20</numberOfSprites>
 
@@ -18,7 +18,7 @@
 </view>
 
 <world>
-  <width>1300</width>
+  <width>2000</width>
   <height>683</height>
 </world>
 
@@ -70,6 +70,47 @@
     <distance>200</distance>
   </chunk>
 </bulbasaur>
+
+<snorlax>
+  <file>images/snorlax.png</file>
+  <startLoc x="0" y="600"/>
+
+  <frames>3</frames>
+  <frameInterval>24</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>100</width>
+  <height>88</height>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</snorlax>
+
+<snorlax1>
+  <file>images/snorlax1.png</file>
+  <startLoc x="0" y="600"/>
+
+  <frames>3</frames>
+  <frameInterval>24</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>100</width>
+  <height>88</height>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</snorlax1>
+
 
 <charizard>
   <file>images/charmandersprite1.png</file>

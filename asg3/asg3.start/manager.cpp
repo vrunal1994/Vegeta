@@ -42,6 +42,7 @@ Manager::Manager() :
 
   sprites.push_back( new TwoWayMultiSprite("charizard","charizard1") );
    sprites.push_back( new MultiSprite("bulbasaur") );
+   sprites.push_back( new TwoWayMultiSprite("snorlax","snorlax1"));
   sprites.push_back( new Sprite("pokeball") );
   
    
@@ -124,9 +125,7 @@ void Manager::play() {
           sprites[i]->explode();
           }
         }
-        if ( keystate[SDLK_1] ) {
-          sprites[1]->explode();
-        }
+        
         if ( keystate[SDLK_2] ) {
           unsigned int n = Gamedata::getInstance().getXmlInt("numberOfSprites"); 
           for(unsigned int  i=0;i<n;i++){
