@@ -72,7 +72,7 @@ if(frames>200){
     IOManager::getInstance()
     .printMessageValueAt("fps: ", totalfps/count, 10, 10);
     IOManager::getInstance()
-    .printMessageValueAt("fps of last 200 frames: ", sum200/count, 10, 30);
+    .printMessageValueAt("Avg fps of last 200 frames: ", sum200/count, 10, 30);
   IOManager::getInstance()
     .printMessageValueAt("seconds: ", seconds, 10, 60);
 

@@ -45,9 +45,9 @@
 <font name="font">
   <file>font/dyslexic-bold.otf</file>
   <size>16</size>
-  <red>0</red>
-  <green>150</green>
-  <blue>0</blue>
+  <red>238</red>
+  <green>21</green>
+  <blue>21</blue>
   <unused>0</unused>
 </font>
 
@@ -70,46 +70,6 @@
     <distance>200</distance>
   </chunk>
 </bulbasaur>
-
-<snorlax>
-  <file>images/snorlax.png</file>
-  <startLoc x="0" y="600"/>
-
-  <frames>3</frames>
-  <frameInterval>24</frameInterval>
-
-  <srcX>0</srcX>
-  <srcY>0</srcY>
-  <width>100</width>
-  <height>88</height>
-  <speedX>-200</speedX>
-  <speedY>200</speedY>
-  <transparency>true</transparency>
-  <chunk>
-    <size>9</size>
-    <distance>200</distance>
-  </chunk>
-</snorlax>
-
-<snorlax1>
-  <file>images/snorlax1.png</file>
-  <startLoc x="0" y="600"/>
-
-  <frames>3</frames>
-  <frameInterval>24</frameInterval>
-
-  <srcX>0</srcX>
-  <srcY>0</srcY>
-  <width>100</width>
-  <height>88</height>
-  <speedX>-200</speedX>
-  <speedY>200</speedY>
-  <transparency>true</transparency>
-  <chunk>
-    <size>9</size>
-    <distance>200</distance>
-  </chunk>
-</snorlax1>
 
 
 <charizard>

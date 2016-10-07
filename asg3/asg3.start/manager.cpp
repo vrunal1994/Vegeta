@@ -42,7 +42,7 @@ Manager::Manager() :
 
   sprites.push_back( new TwoWayMultiSprite("charizard","charizard1") );
    sprites.push_back( new MultiSprite("bulbasaur") );
-   sprites.push_back( new TwoWayMultiSprite("snorlax","snorlax1"));
+   
   sprites.push_back( new Sprite("pokeball") );
   
    
