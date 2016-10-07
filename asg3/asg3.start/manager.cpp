@@ -13,11 +13,7 @@ Manager::~Manager() {
   for (unsigned i = 0; i < sprites.size(); ++i) {
     delete sprites[i];
   }
-  /*std::list<Drawable*>::const_iterator ptr = sprites.begin();
-  while ( ptr != sprites.end() ) {
-    delete (*ptr);
-    ++ptr;
-  }*/
+ 
 }
 
 Manager::Manager() :
@@ -25,10 +21,9 @@ Manager::Manager() :
   io( IOManager::getInstance() ),
   clock( Clock::getInstance() ),
   screen( io.getScreen() ),
-  world("back", Gamedata::getInstance().getXmlInt("back/factor") ),
-  mountains("mountains", Gamedata::getInstance().getXmlInt("mountains/factor") ),
- //sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
-  //trees("trees", Gamedata::getInstance().getXmlInt("trees/factor") ),
+  world("mountains", Gamedata::getInstance().getXmlInt("mountains/factor") ),
+  mountains("trees", Gamedata::getInstance().getXmlInt("trees/factor") ),
+ 
   viewport( Viewport::getInstance() ),
   sprites(),
   currentSprite(0),
@@ -44,43 +39,32 @@ Manager::Manager() :
   }
   SDL_WM_SetCaption(title.c_str(), NULL);
   atexit(SDL_Quit);
-  unsigned int n = Gamedata::getInstance().getXmlInt("numberOfSprites"); 
 
-  //sprites.push_back( new MultiSprite("charmander") );
- 
-  //sprites.push_back( new Sprite("pokeball") );
-  sprites.push_back( new TwoWayMultiSprite("charmander","charmander1") );
+  sprites.push_back( new TwoWayMultiSprite("charizard","charizard1") );
    sprites.push_back( new MultiSprite("bulbasaur") );
-  //sprites.push_back( new Sprite("greenorb") );
-  for(unsigned int  i=0;i<n;i++){
-  sprites.push_back( 
-    new Sprite("pokeball") );
-  }
-   //currentSprite = sprites.begin();
+  sprites.push_back( new Sprite("pokeball") );
+  
+   
   viewport.setObjectToTrack(sprites[currentSprite]);
-  //viewport.setObjectToTrack(*currentSprite);
+ 
 }
 
 void Manager::draw() const {
   
-  
-  
   world.draw();
   mountains.draw();
-  //sky.draw();
-  //trees.draw();
+  
   clock.display();
-/*std::list<Drawable*>::const_iterator ptr = sprites.begin();
-  while ( ptr != sprites.end() ) {
-    (*ptr)->draw();
-    ++ptr;
-  }*/
+
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
   }
-/*io.printMessageValueAt("fps ", clock.getFps(), 10, 5);
-  io.printMessageValueAt("Seconds: ", clock.getSeconds(), 10, 20);*/
+
   io.printMessageAt("Press T to switch sprites", 10, 45);
+  io.printMessageAt("Press 2 to multiply pokeballs", 600, 15);
+  io.printMessageAt("Press 0 to explode all sprites", 600, 40);
+  io.printMessageAt("Press P to pause", 700, 65);
+  io.printMessageAt("Press S for slow motion", 650, 90);
   io.printMessageAt(title, 10, 450);
   viewport.draw();
 
@@ -100,12 +84,7 @@ void Manager::makeFrame() {
 void Manager::switchSprite() {
   currentSprite = (currentSprite+1) % sprites.size();
   viewport.setObjectToTrack(sprites[currentSprite]);
-/*
-  ++currentSprite;
-  if ( currentSprite == sprites.end() ) {
-    currentSprite = sprites.begin();
-  }
-  viewport.setObjectToTrack(*currentSprite);*/
+
 }
 
 void Manager::update() {
@@ -113,16 +92,7 @@ void Manager::update() {
   
   Uint32 ticks = clock.getElapsedTicks();
 
-  /*static unsigned int lastSeconds = clock.getSeconds();
-  if ( clock.getSeconds() - lastSeconds == 5 ) {
-    lastSeconds = clock.getSeconds();
-    //switchSprite();
-  }*/
-/*std::list<Drawable*>::const_iterator ptr = sprites.begin();
-  while ( ptr != sprites.end() ) {
-    (*ptr)->update(ticks);
-    ++ptr;
-  }*/
+  
   for (unsigned int i = 0; i < sprites.size(); ++i) {
     sprites[i]->update(ticks);
   }
@@ -132,8 +102,7 @@ void Manager::update() {
 
   world.update();
   mountains.update();
-  //sky.update();
-  //trees.update();
+  
   viewport.update(); // always update viewport last
 }
 
@@ -152,15 +121,21 @@ void Manager::play() {
         }
          if ( keystate[SDLK_0] ) {
           for (unsigned int i = 0; i < sprites.size(); ++i) {
-    sprites[i]->explode();
-  }
+          sprites[i]->explode();
+          }
         }
         if ( keystate[SDLK_1] ) {
           sprites[1]->explode();
         }
         if ( keystate[SDLK_2] ) {
-          sprites[2]->explode();
+          unsigned int n = Gamedata::getInstance().getXmlInt("numberOfSprites"); 
+          for(unsigned int  i=0;i<n;i++){
+              sprites.push_back( 
+            new Sprite("pokeball") );
+          }
+        
         }
+
         if ( keystate[SDLK_t] ) {
           switchSprite();
         }

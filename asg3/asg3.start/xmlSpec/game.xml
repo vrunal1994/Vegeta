@@ -2,13 +2,13 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation. 
      So make sure to include your name as part of the screenTitle -->
-<screenTitle>Santhosh Undecided Animation</screenTitle>
+<screenTitle>Santhosh Pokemon Animation</screenTitle>
 <maxStringSize>50</maxStringSize>
 
 <frameCap>60</frameCap>
 <framesAreCapped>true</framesAreCapped>
 
-<frameMax>200</frameMax>
+<frameMax>300</frameMax>
 <username>sravira</username>
 <numberOfSprites>20</numberOfSprites>
 
@@ -18,39 +18,27 @@
 </view>
 
 <world>
-  <width>2000</width>
+  <width>1300</width>
   <height>683</height>
 </world>
 
-<back>
+<mountains>
   <file>images/newmountains.png</file>
   <width>2000</width>
   <height>683</height>
   <factor>2</factor>
   <transparency>true</transparency>
-</back>
+</mountains>
 
-<mountains>
+<trees>
   <file>images/newtrees.png</file>
  <width>2000</width>
   <height>683</height>
   <factor>1</factor>
   <transparency>true</transparency>
-</mountains>
-
-<sky>
-  <file>images/bg1.png</file>
- <width>2000</width>
-  <height>683</height>
-  <factor>1</factor>
-  <transparency>true</transparency>
-</sky>
-<trees>
-  <file>images/layer4.png</file>
- 
-  <factor>1</factor>
-  <transparency>true</transparency>
 </trees>
+
+
 
 
 
@@ -65,7 +53,7 @@
 
 <bulbasaur>
   <file>images/bulbasaursprite.png</file>
-  <startLoc x="0" y="590"/>
+  <startLoc x="0" y="600"/>
 
   <frames>5</frames>
   <frameInterval>20</frameInterval>
@@ -83,71 +71,47 @@
   </chunk>
 </bulbasaur>
 
-<charmander>
+<charizard>
   <file>images/charmandersprite1.png</file>
   <startLoc x="120" y="140"/>
 
   <frames>4</frames>
-  <frameInterval>18</frameInterval>
+  <frameInterval>20</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
   <width>100</width>
   <height>84</height>
-  <speedX>-100</speedX>
-  <speedY>100</speedY>
+  <speedX>-150</speedX>
+  <speedY>150</speedY>
   <transparency>true</transparency>
   <chunk>
     <size>9</size>
     <distance>200</distance>
   </chunk>
-</charmander>
+</charizard>
 
-<charmander1>
+<charizard1>
   <file>images/charmelonsprite.png</file>
   <startLoc x="120" y="140"/>
 
   <frames>4</frames>
-  <frameInterval>18</frameInterval>
+  <frameInterval>20</frameInterval>
 
   <srcX>0</srcX>
   <srcY>0</srcY>
   <width>100</width>
   <height>84</height>
-  <speedX>-100</speedX>
-  <speedY>100</speedY>
+  <speedX>-150</speedX>
+  <speedY>150</speedY>
   <transparency>true</transparency>
   <chunk>
     <size>9</size>
     <distance>200</distance>
   </chunk>
-</charmander1>
+</charizard1>
 
-<spinstar>
-  <file>images/star.png</file>
-  <startLoc x="120" y="140"/>
-  <frames>4</frames>
-  <frameInterval>20</frameInterval>
-  <speedX>-200</speedX>
-  <speedY>200</speedY>
-  <transparency>true</transparency>
-</spinstar>
 
-<star>
-  <file>images/yellowstar32.png</file>
-  <startLoc x="320" y="240"/>
-  <speedX>-175</speedX>
-  <speedY>-175</speedY>
-  <transparency>true</transparency>
-</star>
-
-<greenorb>
-  <file>images/greenball.bmp</file>
-  <startLoc x="320" y="240"/>
-  <speedX>175</speedX>
-  <speedY>175</speedY>
-  <transparency>true</transparency>
-</greenorb>
 
 <pokeball>
   <file>images/Poke Ball.png</file>
@@ -155,7 +119,7 @@
   <srcY>0</srcY>
   <width>60</width>
   <height>58</height>
-  <startLoc x="320" y="240"/>
+  <startLoc x="10" y="140"/>
   <speedX>100</speedX>
   <speedY>175</speedY>
   <transparency>true</transparency>

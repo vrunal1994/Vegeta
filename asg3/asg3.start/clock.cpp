@@ -50,52 +50,32 @@ Clock::Clock(const Clock& c) :
 void Clock::display() const { 
   static unsigned int lastFrames = 0;
   static unsigned int oldFrames = 0;
-  static unsigned int counter = 1;
+  static unsigned int count = 1;
   static unsigned int seconds = getSeconds();
-  static unsigned int totalFPS;
-  static int sum=1;
+  static unsigned int totalfps;
+  static int sum200=1;
   std::deque<unsigned int> capturefps(200,0);
   if ( getSeconds() > seconds ) {
     seconds = getSeconds();
     lastFrames = frames - oldFrames;
     oldFrames = frames;
-    totalFPS=totalFPS+lastFrames;
-    counter++;
+    totalfps=totalfps+lastFrames;
+    count++;
     capturefps.push_back(lastFrames);
   }
   
 if(frames>200){
-  sum+=capturefps.back();
+  sum200+=capturefps.back();
 }
 
-  //static unsigned int framecount=200;
- 
-  //capturefps.reserve(framecount);
-  /*if(capturefps.size()<framecount)
-  {
-    std::cout<<"called consiiton"<<std::endl;
-    for (std::deque< unsigned int>::iterator it = capturefps.begin(); it!=200; ++it)
-    {
-      
-      std::cout<<"called inside"<<std::endl;
-      capturefps.push_back(lastFrames);
-    }
-  }
-  else if(capturefps.size()>framecount)
-  {
-    capturefps.pop_front();
-    capturefps.push_back(lastFrames);
-  }*/
-  IOManager::getInstance().
-    printMessageValueAt("fps: ", getFps(), 10, 10);
-  IOManager::getInstance()
-    .printMessageValueAt("seconds: ", seconds, 10, 30);
-  IOManager::getInstance()
-    .printMessageValueAt("frames in sec: ", lastFrames, 10, 70);
-IOManager::getInstance()
-    .printMessageValueAt("average of all framesnew in sec: ", totalFPS/counter, 10, 90);
+  
     IOManager::getInstance()
-    .printMessageValueAt("average of 200 framesnew in sec: ", sum/counter, 10, 110);
+    .printMessageValueAt("fps: ", totalfps/count, 10, 10);
+    IOManager::getInstance()
+    .printMessageValueAt("fps of last 200 frames: ", sum200/count, 10, 30);
+  IOManager::getInstance()
+    .printMessageValueAt("seconds: ", seconds, 10, 60);
+
 }
 
 void Clock::toggleSloMo() {

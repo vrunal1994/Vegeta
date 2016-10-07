@@ -18,7 +18,7 @@ public:
   virtual void update(Uint32 ticks);
   void explode();
 
-  //bool collidedWith(const Drawable* d) const;
+  
 private:
    ExplodingSprite* explosion;
   const Frame * frame;

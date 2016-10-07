@@ -21,12 +21,10 @@ private:
   SDL_Surface * const screen;
   World world;
   World mountains;
-  //World sky;
- // World trees;
+
   Viewport& viewport;
 
-  //std::list<Drawable*> sprites;
-  //std::list<Drawable*>::iterator currentSprite;
+  
   std::vector<Drawable*> sprites;
   int currentSprite;
 

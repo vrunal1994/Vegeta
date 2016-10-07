@@ -27,8 +27,7 @@ public:
  
 
 private:
-  //friend class Manager;
-  //static Clock* instance;
+  
  
   bool started;
   bool paused;
@@ -47,7 +46,7 @@ private:
   unsigned int ticks;
 
   
-  //Clock& operator++();
+
   
 
   Clock();
