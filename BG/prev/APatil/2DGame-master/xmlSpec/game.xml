@@ -1,0 +1,186 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure top include your name as part of the screenTitle -->
+<screenTitle>Aditya Patil's Animation</screenTitle>
+<maxStringSize>50</maxStringSize>
+<numberOfOrbs>100</numberOfOrbs>
+<numberOfZombies>10</numberOfZombies>
+<frameCap>60</frameCap>
+<framesAreCapped>false</framesAreCapped>
+<frameMax>300</frameMax>
+<username>adpatil</username>
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>1500</width>
+  <height>503</height>
+</world>
+<Controls>
+<width>350</width>
+<height>280</height>
+<helt>280</helt>
+<start>
+<x>40</x>
+<y>40</y>
+</start>
+<autoDisappearTime>3</autoDisappearTime>
+</Controls>
+<Health>
+<helt>100</helt>
+<height>20</height>
+<start>
+<x>700</x>
+<y>50</y>
+</start>
+</Health>
+<clock>
+  <locX>45</locX>
+  <locY>60</locY>
+</clock>
+<bullet>
+  <range>150</range>
+  <speedx>100</speedx>
+  <speedy>10	</speedy>
+</bullet>
+<layer>
+<file>images/start.png</file>
+  <factor>4</factor>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>854</width>
+  <height>503</height>
+  <transparency>true</transparency>
+</layer>
+<layer1>
+  <file>images/layer1.png</file>
+  <factor>4</factor>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>854</width>
+  <height>503</height>
+  <transparency>true</transparency>
+</layer1>
+<conclusion>
+  <file>images/conclusion.png</file>
+  <factor>4</factor>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>854</width>
+  <height>503</height>
+  <transparency>true</transparency>
+</conclusion>
+<layer2>
+  <file>images/layer2.png</file>
+  <factor>3</factor>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>854</width>
+  <height>503</height>
+  <transparency>true</transparency>
+</layer2>
+<layer3>
+  <file>images/layer3.png</file>
+  <factor>2</factor>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>854</width>
+  <height>503</height>
+  <transparency>true</transparency>
+</layer3>
+<layer4>
+  <file>images/layer4.png</file>
+  <factor>1</factor>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>854</width>
+  <height>503</height>
+  <transparency>true</transparency>
+</layer4>
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>0</red>
+  <green>0</green>
+  <blue>0</blue>
+  <unused>0</unused>
+</font>
+
+<spinstar>
+  <file>images/spinstar.png</file>
+  <startLoc x="120" y="140"/>
+
+  <frames>4</frames>
+  <frameInterval>20</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>64</width>
+  <height>64</height>
+  <speedX>0</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+</spinstar>
+<zombie>
+  <file>images/zombie.png</file>
+  <cushion>50</cushion>
+<frames>12</frames>
+  <scale min="0.5" max="1.5"/>
+  <frameInterval>20</frameInterval>
+  <srcX>0</srcX>
+<srcY>0</srcY>
+  <width>32</width>
+  <height>48</height>
+  <loc x="900" y="240"/>
+  <speed x="10" y="0"/>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</zombie>
+<girl>
+  <file>images/girl.png</file>
+  <startLoc x="120" y="350"/>
+  <frames>24</frames>
+  <frameInterval>20</frameInterval>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>32</width>
+  <height>64</height>
+  <speedX>175</speedX>
+  <speedY>175</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+  <safeDistance>350</safeDistance>
+</girl>
+<greenorb>
+  <count>5</count>
+  <file>images/greenball.png</file>
+  <srcX>100</srcX>
+  <srcY>100</srcY>
+  <width>64</width>
+  <height>64</height>
+  <startLoc x="320" y="240"/>
+  <speedX>175</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+</greenorb>
+<redorb>
+  <file>images/redorb.png</file>
+  <cushion>2</cushion>
+  <scale min="0.5" max="1.5"/>
+  <src x="0" y="0"/>
+  <width>32</width>
+  <height>32</height>
+  <loc x="1500" y="1"/>
+  <speed x="0" y="250"/>
+  <transparency>true</transparency>
+</redorb>
+</GameData>

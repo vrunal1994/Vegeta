@@ -1,0 +1,44 @@
+Name: Mourya Bodepudi
+Clemson Email Address: mbodepu@clemson.edu
+
+Project no: 4
+Project due date: 11/13/2015
+
+Project description: 1)Created parallax scrolling using 4 different backgrounds and different factors for each background.
+
+2) A player sprite which can be moved in all 4 directions using arrow keys.
+
+3) Painter's algorithm by scaling the sprites and drawing them from smallest to largest size.
+
+4) HUD which disappears after 2 seconds and can be toggled by pressing F1.
+
+
+
+How you made your sprites:
+
+background : http://munir99.deviantart.com/art/Angry-Birds-City-Background-295173534
+sprite : http://www.gamefromscratch.com/image.axd?picture=jet_3.png
+
+Game idea : The jet will be destroying the meteors using bullets. The jet has to destroy a certain amount meteors of in a given time or the player loses. If the meteors touch the jet, jet explodes and player loses the game.
+
+
+
+--------------------------------
+| Clock         |              |
+--------------------------------
+| Sprites       |              |
+--------------------------------
+| Singleton     |              |
+--------------------------------
+| game.xml      |              |
+--------------------------------
+| Leaks         |              |
+--------------------------------
+| F4/frames     |              |
+--------------------------------
+| Submission    |              |
+--------------------------------
+| README        |              |
+--------------------------------
+
+
