@@ -5,6 +5,8 @@
 #include "world.h"
 #include "viewport.h"
 #include "hud.h"
+#include "player.h"
+#include "scaledSprite.h"
 #include <list>
 
 class Manager {
@@ -22,12 +24,13 @@ private:
   Clock& clock;
 
   SDL_Surface * const screen;
+  SDL_Surface * const scaledSpriteSurface;
   World world;
   World mountains;
 
   Viewport& viewport;
-
-  
+  std::vector<ScaledSprite*> scaledSprites;
+  Player player;
   std::vector<Drawable*> sprites;
   int currentSprite;
 
@@ -39,6 +42,8 @@ private:
 
   void draw() const;
   void update();
+  void makescaledSprites();
+  void printscaledSprites() const;
 
   Manager(const Manager&);
   Manager& operator=(const Manager&);

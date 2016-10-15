@@ -75,7 +75,12 @@ if ( explosion ) {
   float velocityincr=velocityX()* static_cast<float>(ticks) * 0.001;
  
   X(X()+velocityincr);
- 
+ if ( Y() < 0) {
+    velocityY( abs( velocityY() ) );
+  }
+  if ( Y() > worldHeight-frameHeight) {
+    velocityY( -abs( velocityY() ) );
+  }
   if ( X() < 0) {
     velocityX( abs( velocityX() ) );
   }
