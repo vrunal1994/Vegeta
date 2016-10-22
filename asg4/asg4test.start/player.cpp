@@ -11,21 +11,47 @@ void Player::advanceFrame(Uint32 ticks) {
 	timeSinceLastFrame += ticks;
 	if (timeSinceLastFrame > frameInterval) {
           if(right){
+         
+
             currentFrame = (currentFrame+1) %(numberOfFrames/2);
   if(currentFrame==0)currentFrame=0;
           	
  		}
           else if(left){
           currentFrame = (currentFrame+1) %(numberOfFrames);
+          
     if(currentFrame==0)currentFrame=numberOfFrames/2;
 }
 	else if(up){
-	 //currentFrame=(currentFrame+1)%(numberOfFrames*3/4);
-	//if(currentFrame==0)currentFrame=numberOfFrames/2;	
+   
+    if(currentFrame<4)
+    {
+        currentFrame = (currentFrame+1) %(numberOfFrames/2);
+  if(currentFrame==0)currentFrame=0;
+
+    }
+      else
+      {
+           currentFrame = (currentFrame+1) %(numberOfFrames);
+    if(currentFrame==0)currentFrame=numberOfFrames/2;
+      }
+	
 	}
 	else if(down){
-	// currentFrame=(currentFrame+1)%(numberOfFrames/4);
-    //    if(currentFrame==0)currentFrame=0;	
+   
+
+     if(currentFrame<4)
+    {
+        currentFrame = (currentFrame+1) %(numberOfFrames/2);
+  if(currentFrame==0)currentFrame=0;
+
+    }
+      else
+      {
+           currentFrame = (currentFrame+1) %(numberOfFrames);
+    if(currentFrame==0)currentFrame=numberOfFrames/2;
+      }
+	    
 	}
 	  timeSinceLastFrame = 0;
 	}
@@ -36,7 +62,7 @@ Player::Player( const std::string& name,
                     Gamedata::getInstance().getXmlInt(name+"/startLoc/y")), 
            Vector2f(Gamedata::getInstance().getXmlInt(name+"/speedX"),                    Gamedata::getInstance().getXmlInt(name+"/speedY"))
            ) ,turn(false), frames( f ),timeSinceLastFrame( 0 ),left(false),right(false),up(false),
-down(false),
+down(false),idle(true),
   currentFrame(0),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
   frameInterval( Gamedata::getInstance().getXmlInt(name+"/frameInterval") ),
@@ -46,21 +72,29 @@ down(false),
   worldHeight(Gamedata::getInstance().getXmlInt("world/height"))
   
 { 
+  std::cout<<"callled"<<currentFrame<<std::endl;
 }
 void Player::toggleLeft(){	  
   currentFrame=numberOfFrames/2;
   left=!left;
+  idle=!idle;
 }
 void Player::toggleRight(){
 currentFrame=0;	  
   right=!right;
+  idle=!idle;
+
 }
 void Player::toggleUp(){
-//currentFrame=numberOfFrames/2;
+
   up=!up;
+  idle=!idle;
+
 }
 void Player::toggleDown(){
-//currentFrame=0;
+  
+  idle=!idle;
+
   down=!down;
 }
 void Player::draw() const{
@@ -71,9 +105,27 @@ void Player::draw() const{
 
 }
 
+void Player :: IdleState(Uint32 ticks) {
+  timeSinceLastFrame += ticks;
+  if (timeSinceLastFrame > frameInterval ) {
+    if(currentFrame<4)
+    {
+        currentFrame = (currentFrame+1) %(numberOfFrames/2);
+  if(currentFrame==0)currentFrame=0;
+
+    }
+      else
+      {
+           currentFrame = (currentFrame+1) %(numberOfFrames);
+    if(currentFrame==0)currentFrame=numberOfFrames/2;
+      }
+    timeSinceLastFrame = 0;
+  }
+}
 
 void Player::update(Uint32 ticks){
-
+  if(idle)
+IdleState(ticks);
 if(left || right||up||down)
   advanceFrame(ticks);
 

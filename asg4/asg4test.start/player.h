@@ -25,7 +25,7 @@ class Player : public Drawable {
   
   friend class Manager;
   void advanceFrame(Uint32 ticks);
-  
+  void IdleState(Uint32 ticks);
   
   private:
   Player(const Player&);
@@ -37,7 +37,7 @@ class Player : public Drawable {
   bool right;
   bool up;
   bool down;
-  
+  bool idle;
   unsigned currentFrame;
   unsigned numberOfFrames;
   unsigned frameInterval;
