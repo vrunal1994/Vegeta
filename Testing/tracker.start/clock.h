@@ -1,0 +1,62 @@
+#ifndef CLOCK_H
+#define CLOCK_H
+
+#include <SDL.h>
+#include <string>
+
+
+class Manager;
+
+class Clock {
+public:
+  static Clock& getInstance();		// Change * ptr to & reference as Meyers singleton uses reference for singleton
+  unsigned int getTicks() const;
+  unsigned int getTotalTicks() const { return sumOfAllTicks; }
+	
+private:
+  friend class Manager;
+  friend class HUD;
+  static Clock& instance;		// Change * ptr to & reference
+
+  bool started;
+  bool paused;
+  bool sloMo;
+  const bool framesAreCapped;
+  const int frameCap;
+
+  unsigned int frames;
+  
+
+  unsigned int tickSum;
+  unsigned int sumOfAllTicks;	//Sum Of Ticks
+  unsigned int timeAtStart;
+  unsigned int timeAtPause;
+  unsigned int currTicks;	//Ticks At Last Frame
+  unsigned int prevTicks;	//Ticks Since Last Frame
+  unsigned int ticks; 		//Getting ticks from SDL  
+  unsigned int fps;
+  unsigned int avgFPS;
+ 
+
+  unsigned int getElapsedTicks();
+  Clock& operator++();
+  void toggleSloMo();
+
+  bool isStarted() const { return started; }
+  bool isPaused() const  { return paused;  }
+  unsigned int getFrames() const  { return frames;  }
+  unsigned int getSeconds() const { return getTicks()/1000;  }
+  unsigned int capFrameRate() const;
+  
+ // float getFPS() const {return totalFPS;}
+  void start();
+  void pause();
+  void unpause();
+  void display() const;
+  void update();
+
+  Clock();
+  Clock(const Clock&);
+  Clock&operator=(const Clock&);
+};
+#endif

@@ -1,0 +1,103 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<screenTitle>Vrunal Mhatre, experimenting</screenTitle>
+<maxStringSize>50</maxStringSize>
+
+<frameCap>60</frameCap>
+<framesAreCapped>true</framesAreCapped>
+
+<frameMax>300</frameMax>
+<username>vmhatre</username>
+
+<view>
+  <width>864</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>2000</width>
+  <height>480</height>
+</world>
+<mid>
+  <width>100</width>
+  <height>480</height>
+</mid>
+<last>
+  <width>2000</width>
+  <height>480</height>
+</last>
+<back>
+  <file>images/backGround.jpg</file>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+  <factor>1</factor>
+  <transparency>false</transparency>
+</back>
+
+<fore>
+  <file>images/BatCall.png</file>
+  <red>193</red>
+  <green>205</green>
+  <blue>205</blue>
+  <factor>4</factor>
+  <transparency>false</transparency>
+</fore>
+<cloud>
+  <file>images/clouds.png</file>
+  <red>193</red>
+  <green>205</green>
+  <blue>205</blue>
+  <factor>2</factor>
+  <transparency>false</transparency>
+</cloud>
+
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>255</red>
+  <green>0</green>
+  <blue>0</blue>
+  <unused>0</unused>
+</font>
+
+<bat>
+  <file>images/BatCorelComplete.png</file>
+  <startLoc x="120" y="180"/>
+  <frames>8</frames>
+  <frameInterval>250</frameInterval>
+  <speedX>100</speedX>
+  <speedY>0</speedY>
+  <red>255</red>
+  <blue>255</blue>
+  <green>255</green>
+  <transparency>true</transparency>
+</bat>
+
+
+
+<joker>
+  <file>images/JokerCorelComplete.png</file>
+  <startLoc x="1000" y="180"/>
+  <frames>6</frames>
+  <frameInterval>200</frameInterval>
+  <speedX>-50</speedX>
+  <speedY>0</speedY>
+  <red>0</red>
+  <blue>0</blue>
+  <green>0</green>
+  <transparency>true</transparency>
+</joker>
+
+
+<batCall>
+  <file>images/BatSign.png</file>
+  <startLoc x="120" y="220"/>
+  <speedX>175</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+</batCall>
+
+</GameData>

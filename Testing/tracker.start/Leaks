@@ -1,0 +1,77 @@
+==25485== Memcheck, a memory error detector
+==25485== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==25485== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==25485== Command: ./run
+==25485== 
+==25485== 
+==25485== HEAP SUMMARY:
+==25485==     in use at exit: 48,918 bytes in 504 blocks
+==25485==   total heap usage: 24,897 allocs, 24,393 frees, 58,743,860 bytes allocated
+==25485== 
+==25485== 8 bytes in 2 blocks are definitely lost in loss record 5 of 114
+==25485==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25485==    by 0x61DB839: strdup (strdup.c:42)
+==25485==    by 0x6EBEE56: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EC1DD4: _XimEncodeICATTRIBUTE (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB407A: _XimProtoCreateIC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EA1884: XCreateIC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x4E75483: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E763B4: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E66C6A: SDL_VideoInit (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E40E7B: SDL_InitSubSystem (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E40EF3: SDL_Init (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E679C1: SDL_SetVideoMode (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485== 
+==25485== 9 bytes in 1 blocks are definitely lost in loss record 6 of 114
+==25485==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25485==    by 0x6EB0A0E: _XlcDefaultMapModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB0DF5: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x4E7563B: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E763B4: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E66C6A: SDL_VideoInit (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E40E7B: SDL_InitSubSystem (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E40EF3: SDL_Init (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E679C1: SDL_SetVideoMode (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4104A6: IOManager::IOManager() (ioManager.cpp:17)
+==25485==    by 0x4102FF: IOManager::getInstance() (ioManager.cpp:7)
+==25485==    by 0x411310: Manager::Manager() (manager.cpp:19)
+==25485== 
+==25485== 192 (16 direct, 176 indirect) bytes in 1 blocks are definitely lost in loss record 94 of 114
+==25485==    at 0x4C2CE8E: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25485==    by 0x6EA70FD: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EA7657: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EA8F04: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EA96BB: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EC5C9F: _XlcDefaultLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB0C4D: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB0D97: _XlcCurrentLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB0DCD: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x4E755EB: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E763B4: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E66C6A: SDL_VideoInit (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485== 
+==25485== 1,688 (136 direct, 1,552 indirect) bytes in 1 blocks are definitely lost in loss record 107 of 114
+==25485==    at 0x4C2CE8E: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==25485==    by 0x6EA70FD: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EA7657: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EA8F04: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EA96BB: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EC99CF: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB0C4D: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB0D97: _XlcCurrentLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x6EB0DCD: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.3.0)
+==25485==    by 0x4E7563B: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E763B4: ??? (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485==    by 0x4E66C6A: SDL_VideoInit (in /usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.4)
+==25485== 
+==25485== LEAK SUMMARY:
+==25485==    definitely lost: 169 bytes in 5 blocks
+==25485==    indirectly lost: 1,728 bytes in 38 blocks
+==25485==      possibly lost: 0 bytes in 0 blocks
+==25485==    still reachable: 47,021 bytes in 461 blocks
+==25485==         suppressed: 0 bytes in 0 blocks
+==25485== Reachable blocks (those to which a pointer was found) are not shown.
+==25485== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==25485== 
+==25485== For counts of detected and suppressed errors, rerun with: -v
+==25485== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)

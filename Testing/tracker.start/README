@@ -1,0 +1,27 @@
+Project 3:
+
+Vrunal Mhatre
+
+Citations:
+
+Batman Sprite made using Piskel for the body and photo of the face from my  lego keychain.
+Joker sprite was also made using piskel and Paint, where i merged the face and the body of the joker(made in Piskel).
+Bat Sign : made in MS Paint
+Backgrounds borrowed from the web, cited as below:
+http://static.giantbomb.com/uploads/scale_medium/0/870/699051-11.jpg -->> " Joker Side face "
+
+http://lego.wikia.com/wiki/The_Joker  ---->>	"Joker Front face"
+
+http://originalpaintings.com/joe_bowen.htm --- >> "Background buildings"
+
+http://pngimg.com/img/nature/cloud  -->> "Clouds"
+
+https://www.tumblr.com/search/gotham-villains  -->> "Bat call"
+
+I got the idea for the game from the lego keychain I had.
+
+Details:
+Two multiframe sprites ie. The Batman are the joker traverse arond the edges of the viewport and then change direction. Similarly a single sprite of batman logo traverses the width of the viewport, reading from game.xml.
+
+The projects does parallax scrolling with three images. 1. Building Background 2. Clouds 3. Batsign.
+The buildings move the fastest with factor of 1, followed by Clouds and then the Bat sign.
