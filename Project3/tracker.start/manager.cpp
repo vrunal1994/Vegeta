@@ -5,25 +5,15 @@
 #include "sprite.h"
 #include "gamedata.h"
 #include "manager.h"
-#include <algorithm>
-#include <cmath>
 
-class ScaledSpriteCompare{
-  public:
-  bool operator() (const ScaledSprite* lhs, const ScaledSprite* rhs){
-    return lhs->getScale() < rhs->getScale();
-  }
-};
 Manager::~Manager() { 
   // These deletions eliminate "definitely lost" and
   // "still reachable"s in Valgrind.
   for (unsigned i = 0; i < sprites.size(); ++i) {
     delete sprites[i];
   }
-  SDL_FreeSurface(orbSurface);
-  for(unsigned i=0; i<orbs.size(); ++i)
-  {delete orbs[i];}
-  orbs.clear();
+  for(unsigned i = 0; i< player.size(); ++i)
+  {delete player[i];}
 }
 
 Manager::Manager() :
@@ -33,15 +23,12 @@ Manager::Manager() :
   hud(),
   drawHud(false),
   screen( io.getScreen() ),
-  orbSurface(io.loadAndSet(Gamedata::
-      getInstance().getXmlStr("redorb/file"), Gamedata::
-      getInstance().getXmlBool("redorb/transparency"))),
-  orbs(),
   world("back", Gamedata::getInstance().getXmlInt("back/factor")),
   mid("fore", Gamedata::getInstance().getXmlInt("fore/factor")),
   last("cloud", Gamedata::getInstance().getXmlInt("cloud/factor")),
   viewport( Viewport::getInstance() ),
   sprites(),
+  player(),
   currentSprite(0),
 
   makeVideo( false ),
@@ -55,14 +42,14 @@ Manager::Manager() :
   }
   SDL_WM_SetCaption(title.c_str(), NULL);
   atexit(SDL_Quit);
-  sprites.push_back( new MultiSprite("bat") );
-  sprites.push_back( new MultiSprite("joker") );
+  //sprites.push_back( new MultiSprite("bat") );
+  //sprites.push_back( new MultiSprite("joker") );
+  player.push_back(new Player("bat"));
  // sprites.push_back( new MultiSprite("batFlip") );
  // sprites.push_back( new MultiSprite("jokerFlip") );
   sprites.push_back( new Sprite("batCall") );
   viewport.setObjectToTrack(sprites[currentSprite]);
-  makeOrbs();
-  printOrbs();
+  viewport.setObjectToTrack(player[currentSprite]);
 }
 
 void Manager::draw() const {
@@ -72,9 +59,7 @@ void Manager::draw() const {
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
   }
-  for (unsigned i = 0; i < orbs.size(); ++i) {
-    orbs[i]->draw();
-  }
+  player[0]->draw();
   clock.display();
   clock.update();
   //io.printMessageValueAt("Frames " , clock.getFrames() ,10, 5);
@@ -82,6 +67,7 @@ void Manager::draw() const {
   //io.printMessageAt("Press T to switch sprites", 10, 45);
   io.printMessageAt(title, 10, 460);		// Y axis value to print Screen name.
   viewport.draw();
+  //HUD Draw call.
   if(clock.getSeconds() < 5 )
   { hud.drawHUD(screen, 10, 10); }
   if(drawHud)
@@ -104,6 +90,7 @@ void Manager::makeFrame() {
 void Manager::switchSprite() {
   currentSprite = (currentSprite+1) % sprites.size();
   viewport.setObjectToTrack(sprites[currentSprite]);
+  viewport.setObjectToTrack(player[currentSprite]);
 }
 
 void Manager::update() {
@@ -121,9 +108,11 @@ void Manager::update() {
   for (unsigned int i = 0; i < sprites.size(); ++i) {
     sprites[i]->update(ticks);
   }
-  for (unsigned i = 0; i < orbs.size(); ++i) {
-    orbs[i]->update(ticks);
+
+  for (unsigned int i = 0; i < player.size(); ++i) {
+  player[i]->update(ticks);
   }
+  
   if ( makeVideo && frameCount < frameMax ) {
     makeFrame();
   }
@@ -132,23 +121,6 @@ void Manager::update() {
   last.update();
   viewport.update(); // always update viewport last
 }
-
-void Manager::makeOrbs() {
-  unsigned numberOfOrbs = Gamedata::getInstance().getXmlInt("numberOfOrbs");
-  orbs.reserve( numberOfOrbs );
-  for (unsigned i = 0; i < numberOfOrbs; ++i) {
-    orbs.push_back( new ScaledSprite("redorb", orbSurface) );
-  }
-  sort(orbs.begin(), orbs.end(), ScaledSpriteCompare());
-}
-
-
-void Manager::printOrbs() const {
-  for (unsigned i = 0; i < orbs.size(); ++i) {
-    std::cout << orbs[i]->getScale() << std::endl;
-  }
-}
-
 
 void Manager::play() {
   SDL_Event event;
@@ -166,7 +138,7 @@ void Manager::play() {
         if ( keystate[SDLK_t] ) {
           switchSprite();
         }
-        if ( keystate[SDLK_s] ) {
+        if ( keystate[SDLK_l] ) {
           clock.toggleSloMo();				// pointer changed to call-by-refernce 
         }
         if ( keystate[SDLK_p] ) {

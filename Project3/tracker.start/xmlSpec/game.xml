@@ -13,34 +13,28 @@
 
 <view>
   <width>864</width>
-  <height>480</height>
+  <height>354</height>
 </view>
 <HUD>
 <width> 250</width>
 <height> 200</height>
 
 </HUD>
-<screenTitle>Many Orbs</screenTitle>
-<numberOfOrbs>50</numberOfOrbs>
+
 <world>
   <width>2000</width>
-  <height>480</height>
+  <height>354</height>
 </world>
 <mid>
   <width>100</width>
-  <height>480</height>
+  <height>354</height>
 </mid>
 <last>
   <width>2000</width>
-  <height>480</height>
+  <height>354</height>
 </last>
 <back>
-  <file>images/backGround.jpg</file>
-   <src x="0" y="0"/>
-   <width>640</width>
-  <height>480</height>
-  <loc x="320" y="240"/>
-  <speed x="250" y="250"/>
+  <file>images/13.jpg</file>
   <red>255</red>
   <green>255</green>
   <blue>255</blue>
@@ -53,7 +47,7 @@
   <red>193</red>
   <green>205</green>
   <blue>205</blue>
-  <factor>4</factor>
+  <factor>1</factor>
   <transparency>false</transparency>
 </fore>
 <cloud>
@@ -75,15 +69,25 @@
 </font>
 
 <bat>
-  <file>images/BatCorelComplete.png</file>
+  <file>images/Runs.png</file>
   <startLoc x="120" y="180"/>
-  <frames>8</frames>
-  <frameInterval>250</frameInterval>
+  <frames>12</frames>
+  <frameInterval>180</frameInterval>
   <speedX>100</speedX>
   <speedY>0</speedY>
-  <red>255</red>
-  <blue>255</blue>
-  <green>255</green>
+  <red>0</red>
+  <blue>64</blue>
+  <green>128</green>
+   <startLoc x="40" y="340"/>
+  <frameInterval>40</frameInterval>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>61</width>
+  <height>61</height>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <movSpeedX>200</movSpeedX>
+  <movSpeedY>150</movSpeedY>
   <transparency>true</transparency>
 </bat>
 
@@ -110,22 +114,5 @@
   <speedY>0</speedY>
   <transparency>true</transparency>
 </batCall>
-
-<redorb>
-  <file>images/redstar32.png</file>
-  <cushion>50</cushion>
-  <startLoc x="120" y="180"/>
-  <frames>8</frames>
-  <frameInterval>250</frameInterval>
-  <speedX>100</speedX>
-  <speedY>0</speedY>
-  <scale min="0.5" max="1.5"/>
-  <src x="0" y="0"/>
-  <width>32</width>
-  <height>32</height>
-  <loc x="320" y="240"/>
-  <speed x="250" y="250"/>
-  <transparency>true</transparency>
-</redorb>
 
 </GameData>

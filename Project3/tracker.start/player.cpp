@@ -17,10 +17,7 @@ Player::Player(const std::string& name):
   frameHeight(frames[0]->getHeight()),
   movSpeedX( Gamedata::getInstance().getXmlInt(name+"/movSpeedX") ),
   movSpeedY( Gamedata::getInstance().getXmlInt(name+"/movSpeedY") ),
-  direction( 1 ),
-    playerLeft(false),
-  playerRight(false),
-  playerIdle(true)
+  direction( 1 )
 { }
 
 Player::Player(const Player& s) :
@@ -36,10 +33,7 @@ Player::Player(const Player& s) :
   frameHeight( s.frameHeight ),
   movSpeedX( s.movSpeedX ),
   movSpeedY( s.movSpeedY ),
-  direction( s.direction ),
-  playerLeft(s.playerLeft),
-  playerRight(s.playerRight),
-  playerIdle(s.playerIdle)
+  direction( s.direction )
 { }
 
 void Player::draw() const 
@@ -77,9 +71,7 @@ advanceFrame(ticks);
 
   //horizontal movement
   if(keyPressed[SDLK_d])
-  {playerIdle =false;
-  playerLeft =false;
-  playerRight =true;
+  {
     if(X() < worldWidth-frameWidth)
       velocityX( movSpeedY );
     else
@@ -88,9 +80,6 @@ advanceFrame(ticks);
   }
   else if(keyPressed[SDLK_a])
   {
-      playerIdle =false;
-  playerLeft =true;
-  playerRight =false;
     if(X() > 0)
       velocityX( -movSpeedY );
     else
@@ -110,25 +99,15 @@ advanceFrame(ticks);
 
 void Player :: advanceFrame(Uint32 ticks) {
 	timeSinceLastFrame += ticks;
-	if (timeSinceLastFrame > frameInterval )
-    {
-        if( playerRight && direction) {
+	if (timeSinceLastFrame > frameInterval  && direction) {
          
-    currentFrame = ((currentFrame+1) % 3) + 4;
+    currentFrame = (currentFrame+1) % (numberOfFrames/2);
 		timeSinceLastFrame = 0;
 	}
-        if( playerIdle ) {
+
+    if (timeSinceLastFrame > frameInterval  && (direction<1)) {
          
-    currentFrame = ((currentFrame+1) % 4 ) ;
+    currentFrame = ((currentFrame+1) % (numberOfFrames/2)) + (numberOfFrames/2);
 		timeSinceLastFrame = 0;
 	}
-    if (timeSinceLastFrame > frameInterval )
-    {
-        if( playerLeft && (direction<1)) {
-         
-    currentFrame = ((currentFrame+1) % 3) + 7;
-		timeSinceLastFrame = 0;
-	}
-    }
-    }
 }

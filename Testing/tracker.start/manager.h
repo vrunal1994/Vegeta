@@ -34,6 +34,8 @@ private:
   const std::string username;
   const std::string title;
   const int frameMax;
+  
+
 
   void draw() const;
   void update();

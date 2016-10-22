@@ -36,6 +36,7 @@ Manager::Manager() :
   username(  Gamedata::getInstance().getXmlStr("username") ),
   title( Gamedata::getInstance().getXmlStr("screenTitle") ),
   frameMax( Gamedata::getInstance().getXmlInt("frameMax") )
+
 {
   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
     throw string("Unable to initialize SDL: ");
@@ -49,6 +50,7 @@ Manager::Manager() :
  // sprites.push_back( new MultiSprite("jokerFlip") );
   sprites.push_back( new Sprite("batCall") );
   viewport.setObjectToTrack(sprites[currentSprite]);
+  viewport.setObjectToTrack(player[currentSprite]);
 }
 
 void Manager::draw() const {
@@ -89,6 +91,7 @@ void Manager::makeFrame() {
 void Manager::switchSprite() {
   currentSprite = (currentSprite+1) % sprites.size();
   viewport.setObjectToTrack(sprites[currentSprite]);
+  viewport.setObjectToTrack(player[currentSprite]);
 }
 
 void Manager::update() {
@@ -106,7 +109,11 @@ void Manager::update() {
   for (unsigned int i = 0; i < sprites.size(); ++i) {
     sprites[i]->update(ticks);
   }
-  player[0]->update(ticks);
+
+  for (unsigned int i = 0; i < player.size(); ++i) {
+  player[i]->update(ticks);
+  }
+  
   if ( makeVideo && frameCount < frameMax ) {
     makeFrame();
   }

@@ -14,7 +14,7 @@ class Player: public Drawable
 public:
  Player(const std::string&);
  Player(const Player&);
- 
+ //virtual ~Player(){d};
  virtual void draw()const;
  virtual void update(Uint32 ticks);
  virtual const Frame* getFrame() const {return frames[currentFrame];}
@@ -35,9 +35,6 @@ public:
   int movSpeedX;
   int movSpeedY;
   int direction;
-    bool playerLeft;
-   bool playerRight;
-   bool playerIdle;
 
 
  void advanceFrame(Uint32 ticks);

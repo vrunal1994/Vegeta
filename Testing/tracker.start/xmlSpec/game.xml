@@ -69,10 +69,10 @@
 </font>
 
 <bat>
-  <file>images/RunningHop.png</file>
+  <file>images/VegetaStandAndRun.png</file>
   <startLoc x="120" y="180"/>
-  <frames>6</frames>
-  <frameInterval>120</frameInterval>
+  <frames>10</frames>
+  <frameInterval>180</frameInterval>
   <speedX>100</speedX>
   <speedY>0</speedY>
   <red>0</red>

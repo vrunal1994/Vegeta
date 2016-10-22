@@ -48,6 +48,7 @@ public:
   }
 
 private:
+friend class Player;
   std::string name;
   Vector2f position;
   Vector2f velocity;

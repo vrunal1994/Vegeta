@@ -4,14 +4,14 @@
 
 void MultiSprite::advanceFrame(Uint32 ticks) {
 	timeSinceLastFrame += ticks;
-	if (timeSinceLastFrame > frameInterval && (velocityX() > 0) ) {
-    currentFrame = (currentFrame+1) % (numberOfFrames/2);
+	if (timeSinceLastFrame > frameInterval ) {
+    currentFrame = (currentFrame+1) % (numberOfFrames);
 		timeSinceLastFrame = 0;
 	}
-    if (timeSinceLastFrame > frameInterval && (velocityX() < 0) ) {     // Code to traverse the flip frames for two way sprite.
-	{currentFrame = ((currentFrame+1)%(numberOfFrames/2))+ (numberOfFrames/2);
-	timeSinceLastFrame = 0;}
-	}
+  //  if (timeSinceLastFrame > frameInterval && (velocityX() < 0) ) {     // Code to traverse the flip frames for two way sprite.
+//	{currentFrame = ((currentFrame+1)%(numberOfFrames/2))+ (numberOfFrames/2);
+//	timeSinceLastFrame = 0;}
+//	}
 }
 
 MultiSprite::MultiSprite( const std::string& name) :
