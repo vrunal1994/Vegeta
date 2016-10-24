@@ -89,7 +89,7 @@ advanceFrame(ticks);
   else
     velocityX(0);
   
-  //superspeed
+  //fast
   if(keyPressed[SDLK_SPACE])
     velocityX( 2*velocityX() );
 

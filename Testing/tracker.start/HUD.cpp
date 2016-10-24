@@ -7,6 +7,7 @@
 
 
 HUD::HUD():
+//bar(),
 clock(Clock::getInstance()),
 io(IOManager::getInstance())
 {}
@@ -30,6 +31,10 @@ void HUD::drawHUD(SDL_Surface* screen , int x, int y) const
   IOManager::getInstance()
     .printMessageValueAt("avg for last 200: ",clock.avgFPS, 10, 160);		// Average of last 200 frames
 
-   
-  
+   /*
+  bar.draw();
+  currTicks = SDL_GetTicks();
+  ticks = currTicks-prevTicks;
+  prevTicks = currTicks;
+  bar.update(ticks);*/
 }

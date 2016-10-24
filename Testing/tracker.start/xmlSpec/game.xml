@@ -39,6 +39,8 @@
   <green>255</green>
   <blue>255</blue>
   <factor>1</factor>
+   <width>900</width>
+  <height>354</height>
   <transparency>false</transparency>
 </back>
 
@@ -48,6 +50,8 @@
   <green>205</green>
   <blue>205</blue>
   <factor>1</factor>
+  <width>2000</width>
+  <height>354</height>
   <transparency>false</transparency>
 </fore>
 <cloud>
@@ -56,6 +60,8 @@
   <green>205</green>
   <blue>205</blue>
   <factor>2</factor>
+  <width>900</width>
+  <height>354</height>
   <transparency>false</transparency>
 </cloud>
 
@@ -82,8 +88,8 @@
   <frameInterval>40</frameInterval>
   <srcX>0</srcX>
   <srcY>0</srcY>
-  <width>61</width>
-  <height>61</height>
+  <width>100</width>
+  <height>100</height>
   <speedX>0</speedX>
   <speedY>0</speedY>
   <movSpeedX>200</movSpeedX>
@@ -112,6 +118,8 @@
   <startLoc x="120" y="220"/>
   <speedX>175</speedX>
   <speedY>0</speedY>
+  <width>20</width>
+  <height>34</height>
   <transparency>true</transparency>
 </batCall>
 

@@ -6,6 +6,7 @@
 #include "viewport.h"
 #include "HUD.h"
 #include "player.h"
+#include "scaledSprite.h"
 
 class Manager {
 public:
@@ -21,6 +22,8 @@ private:
   HUD hud;
   bool drawHud;
   SDL_Surface * const screen;
+  SDL_Surface * const orbSurface;
+  std::vector<ScaledSprite*> orbs;
   World world;
   World mid;
   World last;
@@ -37,6 +40,8 @@ private:
 
   void draw() const;
   void update();
+  void makeOrbs();
+  void printOrbs() const;
 
   Manager(const Manager&);
   Manager& operator=(const Manager&);

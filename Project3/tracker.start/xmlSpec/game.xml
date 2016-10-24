@@ -38,9 +38,33 @@
   <red>255</red>
   <green>255</green>
   <blue>255</blue>
+  <width>2000</width>
+  <height>354</height>
   <factor>1</factor>
   <transparency>false</transparency>
 </back>
+<numberOfOrbs> 10 </numberOfOrbs>
+<redorb>
+  <file>images/redstar32.png</file>
+  <cushion>50</cushion>
+  <startLoc x="120" y="220"/>
+  <scale min="0.5" max="1.5"/>
+  <src x="0" y="0"/>
+  <width>32</width>
+  <height>32</height>
+  <loc x="320" y="240"/>
+  <speed x="250" y="250"/>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>61</width>
+  <height>61</height>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <movSpeedX>200</movSpeedX>
+  <movSpeedY>150</movSpeedY>
+  <transparency>true</transparency>
+</redorb>
+
 
 <fore>
   <file>images/BatCall.png</file>
@@ -48,6 +72,8 @@
   <green>205</green>
   <blue>205</blue>
   <factor>1</factor>
+  <width>2000</width>
+  <height>354</height>
   <transparency>false</transparency>
 </fore>
 <cloud>
@@ -56,6 +82,8 @@
   <green>205</green>
   <blue>205</blue>
   <factor>2</factor>
+  <width>2000</width>
+  <height>354</height>
   <transparency>false</transparency>
 </cloud>
 
@@ -112,6 +140,8 @@
   <startLoc x="120" y="220"/>
   <speedX>175</speedX>
   <speedY>0</speedY>
+  <width>20</width>
+  <height>34</height>
   <transparency>true</transparency>
 </batCall>
 

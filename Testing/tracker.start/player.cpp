@@ -73,8 +73,12 @@ advanceFrame(ticks);
       Y(worldHeight-frameHeight);
   }
   else
-    velocityY(0);
-
+   { velocityY(0);}
+  
+  if(!keyPressed[SDLK_d] && !keyPressed[SDLK_a])
+  {playerIdle =true;
+  playerLeft =false;
+  playerRight =false;}
   //horizontal movement
   if(keyPressed[SDLK_d])
   {playerIdle =false;

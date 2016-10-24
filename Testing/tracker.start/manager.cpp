@@ -55,7 +55,7 @@ Manager::Manager() :
 
 void Manager::draw() const {
   world.draw();
-  mid.draw();
+ // mid.draw();
   last.draw();
   for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
@@ -118,7 +118,7 @@ void Manager::update() {
     makeFrame();
   }
   world.update();
-  mid.update();
+  //mid.update();
   last.update();
   viewport.update(); // always update viewport last
 }

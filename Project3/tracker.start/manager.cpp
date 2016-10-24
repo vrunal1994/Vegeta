@@ -5,7 +5,15 @@
 #include "sprite.h"
 #include "gamedata.h"
 #include "manager.h"
+#include <vector>
+#include <algorithm>
 
+class ScaledSpriteCompare {
+public:
+  bool operator()(const ScaledSprite* lhs, const ScaledSprite* rhs) {
+    return lhs->getScale() < rhs->getScale();
+  }
+};
 Manager::~Manager() { 
   // These deletions eliminate "definitely lost" and
   // "still reachable"s in Valgrind.
@@ -14,6 +22,12 @@ Manager::~Manager() {
   }
   for(unsigned i = 0; i< player.size(); ++i)
   {delete player[i];}
+
+  SDL_FreeSurface(orbSurface);
+
+  for(unsigned i =0 ; i<orbs.size(); ++i)
+  {delete orbs[i];}
+  orbs.clear();
 }
 
 Manager::Manager() :
@@ -23,6 +37,10 @@ Manager::Manager() :
   hud(),
   drawHud(false),
   screen( io.getScreen() ),
+  orbSurface(io.loadAndSet
+    (Gamedata::getInstance().getXmlStr("redorb/file"),
+    Gamedata::getInstance().getXmlBool("redorb/transparency") )),
+  orbs(),  
   world("back", Gamedata::getInstance().getXmlInt("back/factor")),
   mid("fore", Gamedata::getInstance().getXmlInt("fore/factor")),
   last("cloud", Gamedata::getInstance().getXmlInt("cloud/factor")),
@@ -50,6 +68,23 @@ Manager::Manager() :
   sprites.push_back( new Sprite("batCall") );
   viewport.setObjectToTrack(sprites[currentSprite]);
   viewport.setObjectToTrack(player[currentSprite]);
+  makeOrbs();
+  printOrbs();
+}
+
+void Manager:: makeOrbs(){
+  unsigned numberOfOrbs = Gamedata::getInstance().getXmlInt("numberOfOrbs");
+  orbs.reserve( numberOfOrbs );
+  for (unsigned i = 0; i < numberOfOrbs; ++i) {
+    orbs.push_back( new ScaledSprite("redorb", orbSurface) );
+  }
+  std::sort(orbs.begin(), orbs.end(), ScaledSpriteCompare());
+
+}
+void Manager::printOrbs() const {
+  for (unsigned i = 0; i < orbs.size(); ++i) {
+    std::cout << orbs[i]->getScale() << std::endl;
+  }
 }
 
 void Manager::draw() const {
@@ -62,6 +97,9 @@ void Manager::draw() const {
   player[0]->draw();
   clock.display();
   clock.update();
+  for (unsigned i = 0; i < orbs.size(); ++i) {
+    orbs[i]->draw();
+  }
   //io.printMessageValueAt("Frames " , clock.getFrames() ,10, 5);
   //io.printMessageValueAt("Seconds: ", clock.getSeconds(), 10, 20); 		// pointer changed to call-by-refernce 
   //io.printMessageAt("Press T to switch sprites", 10, 45);
@@ -107,6 +145,9 @@ void Manager::update() {
   
   for (unsigned int i = 0; i < sprites.size(); ++i) {
     sprites[i]->update(ticks);
+  }
+   for (unsigned i = 0; i < orbs.size(); ++i) {
+    orbs[i]->update(ticks);
   }
 
   for (unsigned int i = 0; i < player.size(); ++i) {

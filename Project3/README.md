@@ -29,7 +29,7 @@ Game Mechanics:
 
 Extra Contribution:
 	Combat animation between Vegeta and Charlizard.
-        Dieing animation and Powerup features.
+        Dying animation and Powerup features.
 
 Problems with this project:
 
