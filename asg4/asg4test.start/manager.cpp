@@ -113,6 +113,7 @@ std::list<Drawable*>::const_iterator ptr = sprites.begin();
     (*ptr)->draw();
     ++ptr;
   }
+
   /*for (unsigned i = 0; i < sprites.size(); ++i) {
     sprites[i]->draw();
   }*/
@@ -188,6 +189,7 @@ void Manager::update() {
     (*ptr)->update(ticks);
     ++ptr;
   }
+   
   /*player.update(ticks);
   player.stop();*/
   if ( makeVideo && frameCount < frameMax ) {
@@ -224,13 +226,16 @@ void Manager::play() {
           std::cout << "Making video frames" << std::endl;
           makeVideo = true;
         }
-         
+         if (keystate[SDLK_h]) {
+        //player->shoot("greenorb",player->getPosition()+Vector2f(60,20),Vector2f(Gamedata::getInstance().getXmlInt("greenorb/speedX")+Gamedata::getInstance().getXmlInt("flamethrower/speedx"),Gamedata::getInstance().getXmlInt("greenorb/speedY")+Gamedata::getInstance().getXmlInt("flamethrower/speedy")),FrameFactory::getInstance().getFrame("greenorb"));
+        
+        }
    if (keystate[SDLK_F1]) {
           if(drawHud == true) drawHud = false ;
           else if(drawHud == false) drawHud = true;
         }
          
-  
+    
         switch(event.key.keysym.sym){
         case SDLK_a:
     player->toggleLeft();  break;

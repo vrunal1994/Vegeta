@@ -5,7 +5,77 @@
 #include "frameFactory.h"
 #include "explodingSprite.h"
 Player:: ~Player(){
+  std::list<flamethrower>::iterator it=flamethrowerList.begin();
+  std::list<flamethrower>::iterator itf=freeList.begin();
+  while(it!=flamethrowerList.end()){
+  it=flamethrowerList.erase(it);
+}
+flamethrowerList.clear();
+while(itf!=freeList.end()){
+  itf=freeList.erase(itf);
+} 
+freeList.clear();
   
+}
+
+void Player::goLeft(Uint32 ticks){
+  timeSinceLastFrame += ticks;
+  if (timeSinceLastFrame > frameInterval) {
+     currentFrame = (currentFrame+1) %(numberOfFrames);
+          
+    if(currentFrame==0)currentFrame=numberOfFrames/2;
+    timeSinceLastFrame = 0;
+  }
+
+}
+
+void Player::goRight(Uint32 ticks){
+  timeSinceLastFrame += ticks;
+  if (timeSinceLastFrame > frameInterval) {
+     
+            currentFrame = (currentFrame+1) %(numberOfFrames/2);
+  if(currentFrame==0)currentFrame=0;
+    timeSinceLastFrame = 0;
+  }
+
+}
+
+void Player::goUp(Uint32 ticks){
+  timeSinceLastFrame += ticks;
+  if (timeSinceLastFrame > frameInterval) {
+     if(currentFrame<4)
+    {
+        currentFrame = (currentFrame+1) %(numberOfFrames/2);
+  if(currentFrame==0)currentFrame=0;
+
+    }
+      else
+      {
+           currentFrame = (currentFrame+1) %(numberOfFrames);
+    if(currentFrame==0)currentFrame=numberOfFrames/2;
+      }
+    timeSinceLastFrame = 0;
+  }
+
+}
+
+void Player::goDown(Uint32 ticks){
+  timeSinceLastFrame += ticks;
+  if (timeSinceLastFrame > frameInterval) {
+     if(currentFrame<4)
+    {
+        currentFrame = (currentFrame+1) %(numberOfFrames/2);
+  if(currentFrame==0)currentFrame=0;
+
+    }
+      else
+      {
+           currentFrame = (currentFrame+1) %(numberOfFrames);
+    if(currentFrame==0)currentFrame=numberOfFrames/2;
+      }
+    timeSinceLastFrame = 0;
+  }
+
 }
 void Player::advanceFrame(Uint32 ticks) {
 	timeSinceLastFrame += ticks;
@@ -69,40 +139,56 @@ down(false),idle(true),
   frameWidth(frames[0]->getWidth()),
   frameHeight(frames[0]->getHeight()),
   worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
-  worldHeight(Gamedata::getInstance().getXmlInt("world/height"))
+  worldHeight(Gamedata::getInstance().getXmlInt("world/height")),
+  flamethrowerList(),
+  freeList()
+ 
   
 { 
-  std::cout<<"callled"<<currentFrame<<std::endl;
+  //std::cout<<"callled"<<currentFrame<<std::endl;
 }
 void Player::toggleLeft(){	  
   currentFrame=numberOfFrames/2;
-  left=!left;
-  idle=!idle;
+  left=true;
+  right=false;
+  idle=false;
 }
 void Player::toggleRight(){
 currentFrame=0;	  
-  right=!right;
-  idle=!idle;
-
+  right=true;
+ left=false;
+  idle=false;
 }
 void Player::toggleUp(){
-
-  up=!up;
-  idle=!idle;
+    up=true;
+    down=false;
+    idle=false;
 
 }
 void Player::toggleDown(){
   
-  idle=!idle;
-
-  down=!down;
+  idle=false;
+up=false;
+  down=true;  
+}
+void Player::stop(){
+  //setPosition(Vector2f(getPosition()[0],getPosition()[1]));
+  idle=true;
+  up=false;
+  down=false;
+  left=false;
+  right=false;
 }
 void Player::draw() const{
  
   Uint32 x = static_cast<Uint32>(X());
   Uint32 y = static_cast<Uint32>(Y());
-    frames[currentFrame]->draw(x, y);
-
+  frames[currentFrame]->draw(x, y);
+  std::list<flamethrower>::const_iterator itB=flamethrowerList.begin();
+  while(itB!=flamethrowerList.end()){
+  (*itB).draw();
+  itB++;
+  }
 }
 
 void Player :: IdleState(Uint32 ticks) {
@@ -123,11 +209,62 @@ void Player :: IdleState(Uint32 ticks) {
   }
 }
 
+void Player::shoot(const std::string& name,const Vector2f& pos,const Vector2f& vel,const Frame* frm){
+  if(freeList.empty()){
+  if(currentFrame<4)
+
+  flamethrowerList.push_back(flamethrower(name,pos,vel*2,frm));
+  else 
+  flamethrowerList.push_back(flamethrower(name,pos,Vector2f(-500,320),frm));
+
+}
+  else {
+    flamethrower fth=freeList.front();
+    freeList.pop_front();
+    fth.reset();
+            if(currentFrame<4)
+            {
+fth.setPosition(pos);
+  fth.setVelocity(vel*2);
+}
+  else 
+  {
+    fth.setPosition(pos);
+  fth.setVelocity(Vector2f(-500,320));
+  
+  }
+  
+  flamethrowerList.push_back(fth);
+}
+}
 void Player::update(Uint32 ticks){
-  if(idle)
+
+Uint8 *keystate = SDL_GetKeyState(NULL);
+if(!keystate[SDLK_a]&& !keystate[SDLK_d] && !keystate[SDLK_w] && !keystate[SDLK_s])
+      stop();
+
+  if(idle )
 IdleState(ticks);
-if(left || right||up||down)
-  advanceFrame(ticks);
+else if(left)
+{
+  goLeft(ticks);
+
+}
+else if(right)
+  goRight(ticks);
+else if(up)
+  goUp(ticks);
+else if(down)
+  goDown(ticks);
+std::list<flamethrower>::iterator it=flamethrowerList.begin();
+while(it!=flamethrowerList.end()){
+  (*it).update(ticks);
+      if(it->goneFar()){
+        freeList.push_back(*it);
+  it=flamethrowerList.erase(it);
+      }
+it++;
+}
 
   if(left && !right)
     setPosition(Vector2f(getPosition()[0]-getVelocity()[0] * static_cast<float>(ticks)*0.001,getPosition()[1]));

@@ -7,6 +7,7 @@
 #include "hud.h"
 #include "player.h"
 #include "scaledSprite.h"
+
 #include <list>
 
 class Manager {

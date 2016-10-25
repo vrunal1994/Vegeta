@@ -118,7 +118,7 @@
   <file>images/charizard.png</file>
   <startLoc x="120" y="350"/>
   <frames>8</frames>
-  <frameInterval>20</frameInterval>
+  <frameInterval>26</frameInterval>
   <srcX>0</srcX>
   <srcY>0</srcY>
   <width>100</width>
@@ -132,7 +132,23 @@
   </chunk>
   
 </charizard>
-
+<greenorb>
+  <count>5</count>
+  <file>images/fireball.png</file>
+  <srcX>100</srcX>
+  <srcY>100</srcY>
+  <width>64</width>
+  <height>64</height>
+  <startLoc x="320" y="240"/>
+  <speedX>175</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+</greenorb>
+<flamethrower>
+  <range>800</range>
+  <speedx>100</speedx>
+  <speedy>160 </speedy>
+</flamethrower>
 
 <pokeball>
   <file>images/Poke Ball.png</file>

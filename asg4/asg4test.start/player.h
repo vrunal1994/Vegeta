@@ -4,7 +4,7 @@
 #include <vector>
 #include <list>
 #include "drawable.h"
-//#include "bullet.h"
+#include "flamethrower.h"
 //#include "extractSurface.h"
 
 class Player : public Drawable {
@@ -15,6 +15,7 @@ class Player : public Drawable {
   void toggleUp();
   void toggleDown();
   void draw() const;
+  void shoot(const std::string& name,const Vector2f& pos,const Vector2f& vel,const Frame* frm);
   
   virtual const Frame* getFrame() const { 
     return frames[currentFrame]; 
@@ -22,8 +23,13 @@ class Player : public Drawable {
   virtual ~Player();
   void update(Uint32);
   bool turn; 
-  
-  friend class Manager;
+  void stop() ;
+  //friend class Manager;
+  void goLeft(Uint32 ticks);
+  void goRight(Uint32 ticks);
+  void goUp(Uint32 ticks);
+  void goDown(Uint32 ticks);
+
   void advanceFrame(Uint32 ticks);
   void IdleState(Uint32 ticks);
   
@@ -45,5 +51,7 @@ class Player : public Drawable {
   int frameHeight;
   int worldWidth;
   int worldHeight;
+  std::list<flamethrower>flamethrowerList;
+  std::list<flamethrower>freeList;
   
 };
