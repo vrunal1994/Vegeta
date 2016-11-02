@@ -1,0 +1,43 @@
+Name: Santhosh Raj Ravirala
+Clemson Email Address: sravira@clemson.edu	
+Course number:  6160
+
+Project no: 4
+
+Project description: Charizard vs Vegeta
+Project Parnter: Vrunal.
+Contribution: Worked on Dragon ball scaled sprite and Charizard sprite movement. Developed Hud and integrated project code.
+Game theme:Vegeta needs to collect dragon balls and Charizard has to prevent Vegeta from doing so.
+ Vegeta has plasma throwing powers and Charizard is capable to throw fireballs in projectile motion.
+ Dragon balls would be dropped from the sky using Painter's algorithm.
+
+Objective:
+	HUD class: includes aaline and health script to draw lines in manager. Manager class calls HUD functions to draw HUD and uses 		clock function to toggle after 2 seconds. 
+	ScaledSprite: Dragon Balls.
+	Player: Vegeta, Used three bool variables to switch the player direction.
+		Vegeta Sprite has three sprite actions combined in one image. Based on the bool variable that part of multisprite 
+		is called. Use of space bar mulitplies the velocity of X direction by 2 to give a sprint motion.
+	Back Ground: Clouds with factor of 4 to give more depth to mountains and trees.
+	
+Game Mechanics for future projects: 
+    Collisions: Charizard <--> Vegeta (Fireball and Plasma shootings)		//later projects.
+                Vegeta <--> Dragon Balls (Collection of balls)
+
+    Explosions: if health of Vegeta reduces by collisions to fireballs of Charizard, //later projects.
+                 Vegeta may die. Similary for Charizard.		
+
+    AI: Instantiating Dragon balls away from Vegeta to make it difficult for the palyer to collect them.
+    
+    Controls : Vegeta:
+                Navigation : asdw
+                Shooting : some button  //Later projects
+               Charizard
+                Navigation : arrow keys
+                Shooting : Some button		// later Projects
+
+
+Sources:
+Clouds http://pngimg.com/img/nature/cloud
+Vegeta: brosif.devianart.com/Vegeta-Namek-Saga--sprite-Sheet-328792496
+FrameFactory and Frame class: OODesign framework. Prof. Malloy website.	
+Problems with this project:

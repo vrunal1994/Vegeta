@@ -1,4 +1,5 @@
-#include <iostream>
+
+.#include <iostream>
 #include <string>
 #include <iomanip>
 #include "multisprite.h"
