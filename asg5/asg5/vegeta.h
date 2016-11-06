@@ -2,28 +2,35 @@
 #define VEGETA_H
 #include <vector>
 #include "drawable.h"
-#include "sprite.h"
+#include "multisprite.h"
 #include <string>
 #include "gamedata.h"
 #include "ioManager.h"
 
 
-
+class ExplodingSprite;
 class Vegeta: public Drawable
 {
 public:
  Vegeta(const std::string&);
  Vegeta(const Vegeta&);
- 
+/*Vegeta(const std::string&, 
+         const Vector2f& pos, const Vector2f& vel, const std::vector<Frame*>& frm);*/
  virtual void draw()const;
  virtual void update(Uint32 ticks);
  virtual const Frame* getFrame() const {return frames[currentFrame];}
- 
+  virtual void explode();
+  virtual ~Vegeta();
+ int getHealth()const{return health;}
+  void setHealth(int h){health=h;}
+friend class Manager;
+ private:
+  //const Frame * frame;
 
- protected:
  const std::vector<Frame*> frames;
   int worldWidth;
   int worldHeight;
+  ExplodingSprite* explosion;
 
   unsigned currentFrame;
   unsigned numberOfFrames;
@@ -31,7 +38,7 @@ public:
   float timeSinceLastFrame;
   int frameWidth;
   int frameHeight;
-
+  int health;
   int movSpeedX;
   int movSpeedY;
   int direction;
@@ -39,7 +46,7 @@ public:
     bool VegetaLeft;
    bool VegetaRight;
    bool VegetaIdle;
-
+   bool lost;
 
  void advanceFrame(Uint32 ticks);
   Vegeta& operator=(const Vegeta&);

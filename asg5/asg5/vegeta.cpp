@@ -1,6 +1,13 @@
 #include "vegeta.h"
 #include "gamedata.h"
 #include "frameFactory.h"
+#include "explodingSprite.h"
+
+Vegeta::~Vegeta()
+{
+  delete explosion;
+
+}
 
 Vegeta::Vegeta(const std::string& name):
   Drawable(name, 
@@ -11,12 +18,38 @@ Vegeta::Vegeta(const std::string& name):
   frames(FrameFactory::getInstance().getFrames(name)),
   worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
   worldHeight(Gamedata::getInstance().getXmlInt("world/height")),
+  explosion(NULL),
   currentFrame(0),
   numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
   frameInterval( Gamedata::getInstance().getXmlInt(name+"/frameInterval") ),
   timeSinceLastFrame( 0 ),
   frameWidth(frames[0]->getWidth()),
   frameHeight(frames[0]->getHeight()),
+  health(Gamedata::getInstance().getXmlInt("HealthVegeta/helt")),
+
+  movSpeedX( Gamedata::getInstance().getXmlInt(name+"/movSpeedX") ),
+  movSpeedY( Gamedata::getInstance().getXmlInt(name+"/movSpeedY") ),
+  direction( 1 ),
+  
+    VegetaLeft(false),
+  VegetaRight(false),
+  VegetaIdle(true),
+  lost(false)
+{ }
+
+/*Vegeta::Vegeta(const std::string& name, const Vector2f& pos, const Vector2f& vel,
+               const std::vector<Frame*>& frm):
+  Drawable(name, pos, vel), 
+ frames(frm),
+  worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
+  worldHeight(Gamedata::getInstance().getXmlInt("world/height")),
+  explosion(NULL),
+  currentFrame(0),
+  numberOfFrames( Gamedata::getInstance().getXmlInt(name+"/frames") ),
+  frameInterval( Gamedata::getInstance().getXmlInt(name+"/frameInterval") ),
+  timeSinceLastFrame( 0 ),
+  frameWidth(frames[0]->getWidth()),
+  frameHeight(frame[0]->getHeight()),
   movSpeedX( Gamedata::getInstance().getXmlInt(name+"/movSpeedX") ),
   movSpeedY( Gamedata::getInstance().getXmlInt(name+"/movSpeedY") ),
   direction( 1 ),
@@ -24,42 +57,68 @@ Vegeta::Vegeta(const std::string& name):
     VegetaLeft(false),
   VegetaRight(false),
   VegetaIdle(true)
-{ }
+{ }*/
 
 Vegeta::Vegeta(const Vegeta& s) :
   Drawable(s), 
   frames(s.frames),
   worldWidth( s.worldWidth ),
   worldHeight( s.worldHeight ),
+  explosion(s.explosion),
   currentFrame(s.currentFrame),
   numberOfFrames( s.numberOfFrames ),
   frameInterval( s.frameInterval ),
+  
   timeSinceLastFrame( s.timeSinceLastFrame ),
   frameWidth( s.frameWidth ),
   frameHeight( s.frameHeight ),
+  health(s.health),
   movSpeedX( s.movSpeedX ),
   movSpeedY( s.movSpeedY ),
   direction( s.direction ),
   
   VegetaLeft(s.VegetaLeft),
   VegetaRight(s.VegetaRight),
-  VegetaIdle(s.VegetaIdle)
+  VegetaIdle(s.VegetaIdle),
+  lost(s.lost)
 { }
 
 void Vegeta::draw() const 
 {
+
+  if (explosion) {
+    explosion->draw();
+    return;
+  }
     Uint32 x =static_cast<Uint32>(X());
     Uint32 y =static_cast<Uint32>(Y());
     frames[currentFrame]->draw(x,y); 
 
-    std::cout<<"Vegeta X"<<x<<std::endl;
-    std::cout<<"Vegeta Y"<<y<<std::endl;
+    /*std::cout<<"Vegeta X"<<x<<std::endl;
+    std::cout<<"Vegeta Y"<<y<<std::endl;*/
 
 }
 
-
+void Vegeta::explode() { 
+  if ( explosion ) return;
+  else{
+  setHealth(getHealth()-20);
+  Sprite sprite(getName(), getPosition(), getVelocity(), getFrame());
+  explosion = new ExplodingSprite(sprite);
+  }
+}
 void Vegeta::update(Uint32 ticks) 
 {
+
+  if ( explosion ) {
+    explosion->update(ticks);
+    if ( explosion->chunkCount() == 0 ) {
+      delete explosion;
+      explosion = NULL;
+    } 
+    return;
+}
+
 advanceFrame(ticks);
   Uint8 *keyPressed = SDL_GetKeyState(NULL);
 

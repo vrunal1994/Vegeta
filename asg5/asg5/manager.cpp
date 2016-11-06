@@ -29,6 +29,13 @@ Manager::~Manager() {
     delete scaledSprites[i];
   }
   scaledSprites.clear();
+  delete hudcontrols;
+  delete hudhealthvegeta;
+  delete hudhealthcharizard;
+  if(resetvar){
+Manager mang;
+mang.play();
+}
   
 }
 
@@ -41,8 +48,12 @@ public:
 
 Manager::Manager() :
 cld(Collider::getInstance()),
+resetvar(false),
   env( SDL_putenv(const_cast<char*>("SDL_VIDEO_CENTERED=center")) ),
-  hud(), bar(),
+  hudcontrols(new HUD("HUD")),
+  hudhealthvegeta(new HUD("HealthVegeta")),
+  hudhealthcharizard(new HUD("HealthChari")),
+  // bar(),
   drawHud(false),
   io( IOManager::getInstance() ),
   clock( Clock::getInstance() ),
@@ -61,7 +72,7 @@ last("cloud", Gamedata::getInstance().getXmlInt("cloud/factor")),
   vegeta(),
   charizard(),
   currentSprite(0),
-
+  gameover(false),
   makeVideo( false ),
   frameCount( 0 ),
   username(  Gamedata::getInstance().getXmlStr("username") ),
@@ -79,6 +90,7 @@ last("cloud", Gamedata::getInstance().getXmlInt("cloud/factor")),
    sprites.push_back( new MultiSprite("bulbasaur") );
    
   sprites.push_back( new Sprite("pokeball") );*/
+   
   vegeta.push_back(new Vegeta("bat"));
  charizard.push_back(new Charizard("charizard"));
   /*player=dynamic_cast<Player*>(sprites.front());
@@ -86,7 +98,7 @@ last("cloud", Gamedata::getInstance().getXmlInt("cloud/factor")),
    makescaledSprites();
   //viewport.setObjectToTrack(*currentSprite);
   //currentSprite++;
-  viewport.setObjectToTrack(vegeta[currentSprite]);
+  viewport.setObjectToTrack(charizard[currentSprite]);
 
  
 }
@@ -117,6 +129,8 @@ void Manager::checkForCollisions()
      { 
       std::cout<<"collided"<<std::endl;
   io.printMessageAt("Collided", 427, 240);
+          vegeta[0]->explode();  
+
          //
      }
       
@@ -126,7 +140,7 @@ void Manager::checkForCollisions()
 }
 
 void Manager::draw()  const{
-  
+
   world.draw();
   for (unsigned i = 0; i < scaledSprites.size()/3; ++i){
     scaledSprites[i]->draw();
@@ -144,6 +158,13 @@ for (unsigned i = scaledSprites.size()/3 ; i < scaledSprites.size()*2/3; ++i){
   vegeta[0]->draw();
   charizard[0]->draw();
   
+    io.printMessageAt("Vegeta Health", 700, 30);
+
+  hudhealthvegeta->drawHUDdynamic(screen,vegeta[0]->getHealth());
+ 
+io.printMessageAt("Charizard Health", 700, 80);
+  hudhealthcharizard->drawHUDdynamic(screen,charizard[0]->getHealth());
+  
   //clock.display();
 /*std::list<Drawable*>::const_iterator ptr = sprites.begin();
   while ( ptr != sprites.end() ) {
@@ -156,7 +177,7 @@ for (unsigned i = scaledSprites.size()/3 ; i < scaledSprites.size()*2/3; ++i){
   }*/
 //player.draw();
   if(clock.getSeconds()<2){
-    hud.drawHUD(screen, Gamedata::getInstance().getXmlInt("HUD/startX"), Gamedata::getInstance().getXmlInt("HUD/startX"));
+    hudcontrols->drawHUD(screen, Gamedata::getInstance().getXmlInt("HUD/startX"), Gamedata::getInstance().getXmlInt("HUD/startX"));
 
     io.printMessageAt("Press F1 to toggle HUD", 10, 70);
   clock.display();
@@ -171,7 +192,7 @@ for (unsigned i = scaledSprites.size()/3 ; i < scaledSprites.size()*2/3; ++i){
    
 }
    else if(drawHud == true){
-  hud.drawHUD(screen, Gamedata::getInstance().getXmlInt("HUD/startX"), Gamedata::getInstance().getXmlInt("HUD/startX"));
+  hudcontrols->drawHUD(screen, Gamedata::getInstance().getXmlInt("HUD/startX"), Gamedata::getInstance().getXmlInt("HUD/startX"));
 
     io.printMessageAt("Press F1 to toggle HUD", 10, 70);
     clock.display();
@@ -185,7 +206,17 @@ for (unsigned i = scaledSprites.size()/3 ; i < scaledSprites.size()*2/3; ++i){
   
 
  }
- bar.draw();
+
+ if(vegeta[0]->lost){
+io.printMessageAt("Vegeta has Lost",300 , 200);
+io.printMessageAt("Press r to restart the game",300 , 220);
+}
+
+if(charizard[0]->lost){
+io.printMessageAt("charizard has Lost",300 , 200);
+io.printMessageAt("Press r to restart the game",300 , 220);
+}
+ //bar.draw();
   
   io.printMessageAt(title, 10, 450);
   viewport.draw();
@@ -248,7 +279,7 @@ void Manager::update() {
     makeFrame();
   }
   checkForCollisions() ;
- bar.update(ticks);
+// bar.update(ticks);
   world.update();
   mountains.update();
   
@@ -261,7 +292,9 @@ void Manager::play() {
   
   
   while ( not done ) {
-  
+  if(vegeta[0]->getHealth()<=0)vegeta[0]->lost=true;
+  else if(charizard[0]->getHealth()<=0)
+    charizard[0]->lost=true;
     while ( SDL_PollEvent(&event) ) {
       Uint8 *keystate = SDL_GetKeyState(NULL);
       if (event.type ==  SDL_QUIT) { done = true; break; }
@@ -290,6 +323,13 @@ void Manager::play() {
    if (keystate[SDLK_F1]) {
           if(drawHud == true) drawHud = false ;
           else if(drawHud == false) drawHud = true;
+        }
+        if (keystate[SDLK_r]) {
+    resetvar=true;
+                done=true;
+                vegeta[0]->lost=false;
+                charizard[0]->lost=false;
+                break;
         }
          
     
@@ -325,6 +365,7 @@ void Manager::play() {
 
     }
     draw();
+  if( !vegeta[0]->lost && !charizard[0]->lost)
   
     update();
   }

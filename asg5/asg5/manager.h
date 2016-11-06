@@ -20,11 +20,13 @@ public:
   void play();
   void switchSprite();
   Collider& cld;
-
+  bool resetvar;
 private:
   const bool env;
-  HUD hud;
-  Health bar;
+  HUD* hudcontrols;
+  HUD* hudhealthvegeta;
+  HUD* hudhealthcharizard;
+  //Health bar;
   bool drawHud ;
   const IOManager& io;
   Clock& clock;
@@ -34,8 +36,7 @@ private:
   World world;
  World last;
   World mountains;
- 
-
+  
   Viewport& viewport;
   std::vector<ScaledSprite*> scaledSprites;
   //Player* player;
@@ -44,7 +45,7 @@ private:
   std::vector<Vegeta* > vegeta;
   std::vector<Charizard*> charizard;
   int currentSprite;
-  
+  bool gameover;
 
   bool makeVideo;
   int frameCount;

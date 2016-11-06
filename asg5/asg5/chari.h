@@ -9,7 +9,7 @@
 #include <list>
 #include "flamethrower.h"
 
-
+class ExplodingSprite;
 
 class Charizard: public Drawable
 {
@@ -23,23 +23,24 @@ public:
   void shoot(const std::string& name,const Vector2f& pos,const Vector2f& vel,const Frame* frm);
 
  virtual const Frame* getFrame() const {return frames[currentFrame];}
-  /*int getHealth()const{return health;}
-  void setHealth(int h){health=h;}*/
+  int getHealth()const{return health;}
+  void setHealth(int h){health=h;}
   friend class Manager;
  unsigned int getFlameListSize() const { return flamethrowerList.size(); }
   unsigned int getFreeListSize() const { return freeList.size(); }
-  //virtual void explode();
+  virtual void explode();
  private:
  const std::vector<Frame*> frames;
   int worldWidth;
   int worldHeight;
-
+  ExplodingSprite* explosion;
   unsigned currentFrame;
   unsigned numberOfFrames;
   unsigned frameInterval;
   float timeSinceLastFrame;
   int frameWidth;
   int frameHeight;
+  int health;
   int movSpeedX;
   int movSpeedY;
   int direction;
@@ -48,6 +49,7 @@ public:
   bool CharizardUp;
   bool CharizardDown;
   bool CharizardIdle;
+  bool lost;
   std::list<flamethrower>flamethrowerList;
   std::list<flamethrower>freeList;
 

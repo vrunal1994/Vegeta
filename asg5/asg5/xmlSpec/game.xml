@@ -23,12 +23,28 @@
 </world>
 
 <HUD>
+  <start>
+  <x>10</x>
+    <y>10</y>
+</start>
+<helt>280</helt>
   <startX>10</startX>
   <startY>10</startY>
+  <width>350</width>
+<height>280</height>
   <HUD_WIDTH> 280 </HUD_WIDTH>
  <HUD_HEIGHT>250</HUD_HEIGHT>
 </HUD>
-
+<Controls>
+<width>350</width>
+<height>280</height>
+<helt>280</helt>
+<start>
+<x>40</x>
+<y>40</y>
+</start>
+<autoDisappearTime>3</autoDisappearTime>
+</Controls>
 <mountains>
   <file>images/newmountains.png</file>
   <width>2000</width>
@@ -92,6 +108,10 @@
   <movSpeedX>200</movSpeedX>
   <movSpeedY>150</movSpeedY>
   <transparency>true</transparency>
+   <chunk>
+    <size>9</size>
+    <distance>100</distance>
+  </chunk>
 </bat>
 
 <font name="font">
@@ -181,6 +201,22 @@
   <speedy>160 </speedy>
 </flamethrower>
 
+<HealthVegeta>
+  <helt>100</helt>
+  <height>20</height>
+  <start>
+  <x>700</x>
+  <y>50</y>
+  </start>
+</HealthVegeta>
+<HealthChari>
+  <helt>100</helt>
+  <height>20</height>
+  <start>
+  <x>700</x>
+  <y>100</y>
+  </start>
+</HealthChari>
 <pokeball>
   <file>images/Poke Ball.png</file>
   <srcX>0</srcX>
