@@ -29,7 +29,7 @@ Frame::Frame( const Frame& frame ) :
   sourceX(frame.sourceX), 
   sourceY(frame.sourceY) 
 { }
-
+ 
 
 Frame& Frame::operator=(const Frame& rhs) {
   surface = rhs.surface;

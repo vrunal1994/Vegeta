@@ -30,7 +30,7 @@ ScaledSprite::ScaledSprite(const std::string& name,
   worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
   worldHeight(Gamedata::getInstance().getXmlInt("world/height"))
 { }
-
+ 
 ScaledSprite::ScaledSprite(const ScaledSprite& s) :
   Drawable(s.getName(), s.getPosition(), s.getVelocity()), 
   scale(s.scale),

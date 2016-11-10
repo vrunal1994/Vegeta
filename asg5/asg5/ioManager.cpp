@@ -39,7 +39,7 @@ IOManager::IOManager( ) :
   SDL_EnableUNICODE( SDL_ENABLE );
   atexit(TTF_Quit);
 }
-
+ 
 SDL_Surface* IOManager::loadAndSet(const string& filename, bool setcolorkey) const {
   SDL_Surface *tmp = IMG_Load(filename.c_str());
   if (tmp == NULL) {

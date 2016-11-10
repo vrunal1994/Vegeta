@@ -31,7 +31,7 @@ void ParseXML::parseXML() {
     if ( in.eof() ) break;
     else in.getline(buff, BUFSIZE);
   }
-}
+} 
 
 void ParseXML::displayData() const {
   std::map<string, string>::const_iterator ptr = xmlData.begin();

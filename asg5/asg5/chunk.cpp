@@ -12,3 +12,4 @@ void Chunk::update(Uint32 ticks) {
   if (distance > maxDistance) tooFar = true;
 }
 
+ 

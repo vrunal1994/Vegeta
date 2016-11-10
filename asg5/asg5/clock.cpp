@@ -16,7 +16,7 @@ Clock& Clock::getInstance() {
   static Clock clock; 
   return clock;
 }
-
+ 
 Clock::Clock() :
   started(false), 
   paused(false), 

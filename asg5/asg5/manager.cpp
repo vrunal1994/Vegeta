@@ -38,7 +38,7 @@ mang.play();
 }
   
 }
-
+ 
 class ScaledSpriteCompare {
 public:
   bool operator()(const ScaledSprite* lhs, const ScaledSprite* rhs) {

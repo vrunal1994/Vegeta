@@ -30,7 +30,7 @@ Health::Health(int sx, int sy, int tl, int cl,
   BLACK( SDL_MapRGB(screen->format, 0x00, 0x00, 0x00) ),
     color(c) {
 }
-
+ 
 void Health::drawBox() const {
   Draw_AALine(screen, start[0], start[1], 
                       start[0]+totalLength, start[1], 

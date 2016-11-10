@@ -43,7 +43,7 @@ MultiSprite::MultiSprite(const MultiSprite& s) :
   frameWidth( s.frameWidth ),
   frameHeight( s.frameHeight )
   { }
-
+ 
 void MultiSprite::draw() const { 
   if (explosion) {
     explosion->draw();

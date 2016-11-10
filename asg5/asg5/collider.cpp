@@ -13,3 +13,4 @@ Collider& Collider::getInstance(){
   static Collider collider;
   return collider;
 }
+ 

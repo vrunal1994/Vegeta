@@ -32,7 +32,7 @@ Sprite::Sprite(const string& n, const Vector2f& pos, const Vector2f& vel):
   worldWidth(Gamedata::getInstance().getXmlInt("world/width")),
   worldHeight(Gamedata::getInstance().getXmlInt("world/height"))
 { }
-
+ 
 Sprite::Sprite(const string& n, const Vector2f& pos, const Vector2f& vel,
                const Frame* frm):
   Drawable(n, pos, vel),

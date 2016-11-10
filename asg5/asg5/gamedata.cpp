@@ -32,7 +32,7 @@ bool Gamedata::getXmlBool(const string& tag) const {
     if ( ptr->second == "true" ) return true;
     else return false;
   }
-}
+} 
 
 int Gamedata::getXmlInt(const string& tag) const {
   std::map<string, string>::const_iterator ptr = gameData.find(tag);

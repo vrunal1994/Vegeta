@@ -25,7 +25,7 @@ bool RectangularCollisionStrategy::execute(
   if ( bottom2 < top1 ) return false;
   return true;
 }
-
+ 
 
 float MidPointCollisionStrategy::
 distance(float x1, float y1, float x2, float y2) const {

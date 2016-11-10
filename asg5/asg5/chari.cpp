@@ -14,7 +14,7 @@ while(itf!=freeList.end()){
   itf=freeList.erase(itf);
 } 
 freeList.clear();
-  
+   
 }
 
 void Charizard::shoot(const std::string& name,const Vector2f& pos,const Vector2f& vel,const Frame* frm){

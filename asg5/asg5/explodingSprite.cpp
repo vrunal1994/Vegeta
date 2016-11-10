@@ -28,7 +28,7 @@ void ExplodingSprite::draw() const {
     ptr->draw();
     ++ptr;
   }
-}
+} 
 
 void ExplodingSprite::update(Uint32 ticks) { 
   std::list<Chunk>::iterator ptr = chunks.begin();

@@ -22,3 +22,4 @@ void HUD::drawHUDdynamic(SDL_Surface* screen,int helt)const{
                       HudStartX+helt,HudStartY+HUD_HEIGHT/2, 
                       HUD_HEIGHT, 0xff, 0x00, 0x00, 0xff);
 }
+ 
