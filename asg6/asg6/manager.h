@@ -22,7 +22,8 @@ public:
   Collider& cld;
   bool resetvar;
 private:
- 
+  bool vegetaGodMode;
+  bool charizardGodMode;
   const bool env;
   HUD* hudcontrols;
   HUD* hudhealthvegeta;

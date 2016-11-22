@@ -52,6 +52,8 @@ public:
 Manager::Manager() :
 cld(Collider::getInstance()),
 resetvar(false),
+  vegetaGodMode(false),
+  charizardGodMode(false),
   env( SDL_putenv(const_cast<char*>("SDL_VIDEO_CENTERED=center")) ),
   hudcontrols(new HUD("HUD")),
   hudhealthvegeta(new HUD("HealthVegeta")),
@@ -131,7 +133,7 @@ void Manager::checkForCollisions()
    std::list<smallSprite>::const_iterator pls = vegeta[0]->bullets.bulletList.begin();
     while(fth != charizard[0]->flamethrowerList.end())
     {
-        if(cld.collidedWithVegeta(*fth,vegeta[0]))
+        if(!vegetaGodMode && cld.collidedWithVegeta(*fth,vegeta[0]))
      { 
       //std::cout<<"Collided with Vegeta"<<std::endl;
       //io.printMessageAt("Collided with Vegeta", 427, 240);
@@ -143,7 +145,7 @@ void Manager::checkForCollisions()
     }
 
     while( pls != vegeta[0]->bullets.bulletList.end())
-    {if(cld.collidedWithChari(*pls, charizard[0]))
+    {if(!charizardGodMode && cld.collidedWithChari(*pls, charizard[0]))
       {//std::cout<<"Collision with Chari"<<std::endl;
       charizard[0]->explode();
       sound[5];
@@ -334,6 +336,12 @@ void Manager::play() {
         }
         if ( keystate[SDLK_t] ) {
           switchSprite();
+        }
+        if ( keystate[SDLK_c] ) {
+          charizardGodMode=!charizardGodMode;
+        }
+        if ( keystate[SDLK_v] ) {
+          vegetaGodMode=!vegetaGodMode;
         }
 
         if (keystate[SDLK_F4] && !makeVideo) {
