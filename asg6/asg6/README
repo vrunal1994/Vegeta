@@ -1,0 +1,37 @@
+Name:  Santhosh Raj Ravirala
+Clemson Email Address: sravira@clemson.edu	
+Course number:  6160
+
+Project no: 5
+
+Project description: Charizard vs Vegeta
+Project Parnter: Vrunal Mhatre
+Contribution: Worked on Charizard Collision, Explosion, Bullets and Object pooling for bullets. 
+Game theme:Vegeta needs to collect dragon balls and Charizard has to prevent Vegeta from doing so.
+ Vegeta has plasma throwing powers and Charizard is capable to throw fireballs in projectile motion.
+ Dragon balls would be dropped from the sky using Painter's algorithm.
+
+Objective:
+	Object Pooling: To ensure bullets are reused using freeList and bulletList
+    Bullets: Press button 'E' to shoot Plasma from Vegeta.
+             Press button 'Right_Ctrl' to shoot Fireball from Charlizard.
+	Explosions: Collision with Fireball emitted from Charlizard explodes Vegeta.
+    Collisions: Charizard <--> Vegeta (Fireball and Plasma shootings)		        
+    Reset:  Use Button 'R' to Reset the game
+	
+Game Mechanics for future projects: 
+    AI: Instantiating Dragon balls away from Vegeta to make it difficult for the palyer to collect them.
+    
+    Controls : Vegeta:
+                Navigation : asdw
+                Shooting : E  
+               Charizard
+                Navigation : arrow keys
+                Shooting : R_Ctrl
+
+
+Sources:
+Vegeta: brosif.devianart.com/Vegeta-Namek-Saga--sprite-Sheet-328792496
+FrameFactory and Frame class: OODesign framework. Prof. Malloy website.	
+Problems with this project:
+MultiSprite Explosions. 
