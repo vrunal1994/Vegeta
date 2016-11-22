@@ -182,6 +182,12 @@ for (unsigned i = scaledSprites.size()/3 ; i < scaledSprites.size()*2/3; ++i){
 io.printMessageAt("Charizard Health", 700, 80);
   hudhealthcharizard->drawHUDdynamic(screen,charizard[0]->getHealth());
   
+  if(charizardGodMode)
+  { io.printMessageAt("Charizard God Mode On", 650, 140);}
+if(vegetaGodMode)
+{
+  io.printMessageAt("Vegeta God Mode On", 650, 160);
+}
   //clock.display();
 /*std::list<Drawable*>::const_iterator ptr = sprites.begin();
   while ( ptr != sprites.end() ) {
@@ -339,9 +345,11 @@ void Manager::play() {
         }
         if ( keystate[SDLK_c] ) {
           charizardGodMode=!charizardGodMode;
+          
         }
         if ( keystate[SDLK_v] ) {
           vegetaGodMode=!vegetaGodMode;
+         
         }
 
         if (keystate[SDLK_F4] && !makeVideo) {
