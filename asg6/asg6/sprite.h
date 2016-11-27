@@ -17,7 +17,7 @@ public:
 
   virtual void update(Uint32 ticks);
   void explode();
-
+  bool IAmExploding()const;
   
 private:
    ExplodingSprite* explosion;

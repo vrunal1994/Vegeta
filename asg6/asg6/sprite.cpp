@@ -65,7 +65,10 @@ Sprite& Sprite::operator=(const Sprite& rhs) {
   return *this;
 }
 
-
+bool Sprite::IAmExploding()const{
+  if(explosion)return true;
+  else return false;
+}
 
 
 void Sprite::draw() const { 
@@ -80,8 +83,10 @@ void Sprite::draw() const {
 
 void Sprite::explode() { 
   if ( explosion ) return;
+  Sprite sprite(getName(), getPosition(), getVelocity(), getFrame());
+
   //std::cout<<"Check Sprite explosions"<<std::endl;
-  explosion = new ExplodingSprite(*this); 
+  explosion = new ExplodingSprite(sprite); 
 }
 
 

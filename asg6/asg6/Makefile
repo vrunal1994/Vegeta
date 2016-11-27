@@ -35,7 +35,6 @@ clean:
 	rm -rf $(OBJS)
 	rm -rf $(DEPS)
 	rm -rf $(EXEC)
-	rm -rf frames/*.bmp
 
 # Phony target to use clang for compile and linking
 setclang:
@@ -47,7 +46,7 @@ setclang:
 setgcc:
 	@echo "Setting g++"
 	$(eval CXX = g++)
-	$(eval CXX_LINK = g++ )
+	$(eval CXX_LINK = g++)
 
 # $< refers to the first dependency
 # Uses static pattern rule to keep from compiling all

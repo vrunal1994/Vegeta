@@ -37,7 +37,7 @@ Vegeta::Vegeta(const std::string& name):
   timeSinceLastBullet(0),
   minBulletSpeed(Gamedata::getInstance().getXmlInt(bulletName+"/minBulletSpeed")),
   bullets(bulletName),
-  hasExploded( false ), health(100)
+  hasExploded( false ), health(Gamedata::getInstance().getXmlInt("HealthChari/helt"))
    
 { }
 

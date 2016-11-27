@@ -41,13 +41,15 @@ private:
   
   Viewport& viewport;
   std::vector<ScaledSprite*> scaledSprites;
-  //Player* player;
+  Charizard* charizard;
+  Vegeta* vegeta;
   
-  std::list<Drawable*> sprites;
-  std::vector<Vegeta* > vegeta;
-  std::vector<Charizard*> charizard;
+  std::vector<Drawable*> sprites;
+  //std::vector<Vegeta* > vegeta;
+  //std::vector<Charizard*> charizard;
   
-  int currentSprite;
+  std::vector<Drawable*>::iterator currentSprite;
+  int numberofdb;
   bool gameover;
 
   bool makeVideo;

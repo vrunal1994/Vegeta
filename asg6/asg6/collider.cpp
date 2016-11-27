@@ -14,6 +14,11 @@ bool Collider::collidedWithChari(const smallSprite s,
   return strategy->execute(s, *z);
 }
 
+bool Collider::collidedWithDragonBall(const Vegeta* c,
+	const Drawable* d) const  {
+  return strategy->execute(*c, *d);
+}
+
 Collider& Collider::getInstance(){
   static Collider collider;
   return collider;

@@ -14,6 +14,7 @@ public:
   bool collidedWithVegeta(const flamethrower c,
   	const Vegeta* d) const ;
   bool collidedWithChari(const smallSprite s, const Charizard* z)const;
+  bool collidedWithDragonBall(const Vegeta* c,const Drawable* d) const ;
   
  
 private:
