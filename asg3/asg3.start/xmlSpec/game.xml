@@ -1,0 +1,133 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<screenTitle>Santhosh Pokemon Animation</screenTitle>
+<maxStringSize>50</maxStringSize>
+
+<frameCap>60</frameCap>
+<framesAreCapped>true</framesAreCapped>
+
+<frameMax>400</frameMax>
+<username>sravira</username>
+<numberOfSprites>20</numberOfSprites>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>2000</width>
+  <height>683</height>
+</world>
+
+<mountains>
+  <file>images/newmountains.png</file>
+  <width>2000</width>
+  <height>683</height>
+  <factor>2</factor>
+  <transparency>true</transparency>
+</mountains>
+
+<trees>
+  <file>images/newtrees.png</file>
+ <width>2000</width>
+  <height>683</height>
+  <factor>1</factor>
+  <transparency>true</transparency>
+</trees>
+
+
+
+
+
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>238</red>
+  <green>21</green>
+  <blue>21</blue>
+  <unused>0</unused>
+</font>
+
+<bulbasaur>
+  <file>images/bulbasaursprite.png</file>
+  <startLoc x="0" y="600"/>
+
+  <frames>5</frames>
+  <frameInterval>20</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>100</width>
+  <height>88</height>
+  <speedX>-200</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</bulbasaur>
+
+
+<charizard>
+  <file>images/charmandersprite1.png</file>
+  <startLoc x="120" y="140"/>
+
+  <frames>4</frames>
+  <frameInterval>20</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>100</width>
+  <height>84</height>
+  <speedX>-150</speedX>
+  <speedY>150</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</charizard>
+
+<charizard1>
+  <file>images/charmelonsprite.png</file>
+  <startLoc x="120" y="140"/>
+
+  <frames>4</frames>
+  <frameInterval>20</frameInterval>
+
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>100</width>
+  <height>84</height>
+  <speedX>-150</speedX>
+  <speedY>150</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</charizard1>
+
+
+
+<pokeball>
+  <file>images/Poke Ball.png</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>60</width>
+  <height>58</height>
+  <startLoc x="10" y="140"/>
+  <speedX>100</speedX>
+  <speedY>175</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</pokeball>
+
+</GameData>
